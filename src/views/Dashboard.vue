@@ -4,41 +4,43 @@ import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
 import Carousel from "./components/Carousel.vue";
 import CategoriesList from "./components/CategoriesList.vue";
 
-import US from "@/assets/img/icons/flags/US.png";
-import DE from "@/assets/img/icons/flags/DE.png";
-import GB from "@/assets/img/icons/flags/GB.png";
-import BR from "@/assets/img/icons/flags/BR.png";
+import Deluxe from "@/assets/img/icons/flags/Deluxe.png";
+import Suite from "@/assets/img/icons/flags/Suite.png";
+import Royal from "@/assets/img/icons/flags/Royal.png";
+import Platinum from "@/assets/img/icons/flags/Platinum.png";
 
+// 객실 관리
 const sales = {
   us: {
-    country: "United States",
-    sales: 2500,
-    value: "$230,900",
+    country: "Deluxe(디럭스)",
+    sales: 10,
+    value: "$288,000",
     bounce: "29.9%",
-    flag: US,
+    flag: Deluxe,
   },
   germany: {
-    country: "Germany",
-    sales: "3.900",
-    value: "$440,000",
+    country: "Suite(스위트)",
+    sales: 10,
+    value: "$360,000",
     bounce: "40.22%",
-    flag: DE,
+    flag: Suite,
   },
   britain: {
-    country: "Great Britain",
-    sales: "1.400",
-    value: "$190,700",
+    country: "Royal(로얄)",
+    sales: 10,
+    value: "$460,000",
     bounce: "23.44%",
-    flag: GB,
+    flag: Royal,
   },
   brasil: {
-    country: "Brasil",
-    sales: "562",
-    value: "$143,960",
+    country: "Platinum(플래티넘)",
+    sales: 10,
+    value: "$1,208,000",
     bounce: "32.14%",
-    flag: BR,
+    flag: Platinum,
   },
 };
+// 가장 인기있는 객실, 당일 목표 대비 실적, 문의 개수, 매출
 </script>
 <template>
   <div class="py-4 container-fluid">
@@ -47,27 +49,13 @@ const sales = {
         <div class="row">
           <div class="col-lg-3 col-md-6 col-12">
             <mini-statistics-card
-              title="Today's Money"
-              value="$53,000"
+              title="가장 인기있는 객실"
+              value="Deluxe(디럭스)"
               description="<span
                 class='text-sm font-weight-bolder text-success'
-                >+55%</span> since yesterday"
+                >+55%</span> 오늘 하루"
               :icon="{
-                component: 'ni ni-money-coins',
-                background: 'bg-gradient-primary',
-                shape: 'rounded-circle',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <mini-statistics-card
-              title="Today's Users"
-              value="2,300"
-              description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+3%</span> since last week"
-              :icon="{
-                component: 'ni ni-world',
+                component: 'ni ni-favourite-28',
                 background: 'bg-gradient-danger',
                 shape: 'rounded-circle',
               }"
@@ -75,13 +63,27 @@ const sales = {
           </div>
           <div class="col-lg-3 col-md-6 col-12">
             <mini-statistics-card
-              title="New Clients"
+              title="당일 목표 대비 실적"
+              value="2,300"
+              description="<span
+                class='text-sm font-weight-bolder text-success'
+                >+3%</span> since last week"
+              :icon="{
+                component: 'ni ni-world',
+                background: 'bg-gradient-warning',
+                shape: 'rounded-circle',
+              }"
+            />
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <mini-statistics-card
+              title="문의 개수"
               value="+3,462"
               description="<span
                 class='text-sm font-weight-bolder text-danger'
                 >-2%</span> since last quarter"
               :icon="{
-                component: 'ni ni-paper-diploma',
+                component: 'ni ni-email-83',
                 background: 'bg-gradient-success',
                 shape: 'rounded-circle',
               }"
@@ -89,19 +91,20 @@ const sales = {
           </div>
           <div class="col-lg-3 col-md-6 col-12">
             <mini-statistics-card
-              title="Sales"
+              title="매출"
               value="$103,430"
               description="<span
                 class='text-sm font-weight-bolder text-success'
                 >+5%</span> than last month"
               :icon="{
-                component: 'ni ni-cart',
-                background: 'bg-gradient-warning',
+                component: 'ni ni-money-coins',
+                background: 'bg-gradient-secondary',
                 shape: 'rounded-circle',
               }"
             />
           </div>
         </div>
+        <!-- 매출 그래프 -->
         <div class="row">
           <div class="col-lg-7 mb-lg">
             <!-- line chart -->
@@ -134,6 +137,7 @@ const sales = {
             </div>
           </div>
           <div class="col-lg-5">
+            <!-- 그림들 -->
             <carousel />
           </div>
         </div>
@@ -142,7 +146,7 @@ const sales = {
             <div class="card">
               <div class="p-3 pb-0 card-header">
                 <div class="d-flex justify-content-between">
-                  <h6 class="mb-2">Sales by Country</h6>
+                  <h6 class="mb-3">객실 관리</h6>
                 </div>
               </div>
               <div class="table-responsive">
@@ -150,33 +154,41 @@ const sales = {
                   <tbody>
                     <tr v-for="(sale, index) in sales" :key="index">
                       <td class="w-30">
-                        <div class="px-2 py-1 d-flex align-items-center">
-                          <div>
-                            <img :src="sale.flag" alt="Country flag" />
+                        <div class="px-1 py-1 d-flex align-items-center">
+                          <div class="ms-3">
+                            <img
+                              :src="sale.flag"
+                              alt="Country flag"
+                              style="width: 40px; height: 40px"
+                            />
                           </div>
-                          <div class="ms-4">
-                            <p class="mb-0 text-xs font-weight-bold">
-                              Country:
-                            </p>
-                            <h6 class="mb-0 text-sm">{{ sale.country }}</h6>
+                          <div class="ms-5">
+                            <!-- <p class="mb-0 text-s font-weight-bold">
+                              객실 종류:
+                            </p> -->
+                            <h6 class="mb-0 text-m">
+                              종류 : {{ sale.country }}
+                            </h6>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div class="text-center">
-                          <p class="mb-0 text-xs font-weight-bold">Sales:</p>
-                          <h6 class="mb-0 text-sm">{{ sale.sales }}</h6>
+                          <!-- <p class="mb-0 text-s font-weight-bold">
+                            객실 총 개수:
+                          </p> -->
+                          <h6 class="mb-0 text-sm">개수 : {{ sale.sales }}</h6>
                         </div>
                       </td>
                       <td>
                         <div class="text-center">
-                          <p class="mb-0 text-xs font-weight-bold">Value:</p>
-                          <h6 class="mb-0 text-sm">{{ sale.value }}</h6>
+                          <!-- <p class="mb-0 text-s font-weight-bold">가격:</p> -->
+                          <h6 class="mb-0 text-sm">가격 : {{ sale.value }}</h6>
                         </div>
                       </td>
                       <td class="text-sm align-middle">
                         <div class="text-center col">
-                          <p class="mb-0 text-xs font-weight-bold">Bounce:</p>
+                          <!-- <p class="mb-0 text-s font-weight-bold">:</p> -->
                           <h6 class="mb-0 text-sm">{{ sale.bounce }}</h6>
                         </div>
                       </td>
@@ -186,6 +198,8 @@ const sales = {
               </div>
             </div>
           </div>
+
+          <!-- Categories 리스트 -->
           <div class="col-lg-5">
             <categories-list
               :categories="[
