@@ -25,7 +25,7 @@ const getRoute = () => {
         <sidenav-item
           to="/dashboard-default"
           :class="getRoute() === 'dashboard-default' ? 'active' : ''"
-          :navText="isRTL ? 'لوحة القيادة' : 'Dashboard'"
+          :navText="isRTL ? 'لوحة القيادة' : '메인페이지'"
         >
           <template v-slot:icon>
             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -37,7 +37,7 @@ const getRoute = () => {
         <sidenav-item
           to="/tables"
           :class="getRoute() === 'tables' ? 'active' : ''"
-          :navText="isRTL ? 'الجداول' : 'Tables'"
+          :navText="isRTL ? 'الجداول' : '결제 고객 리스트'"
         >
           <template v-slot:icon>
             <i
@@ -51,7 +51,7 @@ const getRoute = () => {
         <sidenav-item
           to="/billing"
           :class="getRoute() === 'billing' ? 'active' : ''"
-          :navText="isRTL ? 'الفواتیر' : 'Billing'"
+          :navText="isRTL ? 'الفواتیر' : '결제..?'"
         >
           <template v-slot:icon>
             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
@@ -63,7 +63,7 @@ const getRoute = () => {
         <sidenav-item
           to="/virtual-reality"
           :class="getRoute() === 'virtual-reality' ? 'active' : ''"
-          :navText="isRTL ? 'الواقع الافتراضي' : 'Virtual Reality'"
+          :navText="isRTL ? 'الواقع الافتراضي' : '날씨 관련'"
         >
           <template v-slot:icon>
             <i class="ni ni-app text-info text-sm opacity-10"></i>
@@ -75,7 +75,7 @@ const getRoute = () => {
         <sidenav-item
           to="/rtl-page"
           :class="getRoute() === 'rtl-page' ? 'active' : ''"
-          navText="RTL"
+          navText="삭제할 예정"
         >
           <template v-slot:icon>
             <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
@@ -97,7 +97,7 @@ const getRoute = () => {
           class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
           :class="isRTL ? 'me-4' : 'ms-2'"
         >
-          ACCOUNT PAGES
+          로그인/회원가입 & 마이 페이지
         </h6>
       </li>
 
@@ -105,7 +105,7 @@ const getRoute = () => {
         <sidenav-item
           to="/profile"
           :class="getRoute() === 'profile' ? 'active' : ''"
-          :navText="isRTL ? 'حساب تعريفي' : 'Profile'"
+          :navText="isRTL ? 'حساب تعريفي' : '마이페이지'"
         >
           <template v-slot:icon>
             <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
@@ -117,7 +117,7 @@ const getRoute = () => {
         <sidenav-item
           to="/signin"
           :class="getRoute() === 'signin' ? 'active' : ''"
-          :navText="isRTL ? 'تسجيل الدخول' : 'Sign In'"
+          :navText="isRTL ? 'تسجيل الدخول' : '로그인'"
         >
           <template v-slot:icon>
             <i class="ni ni-single-copy-04 text-danger text-sm opacity-10"></i>
@@ -129,7 +129,7 @@ const getRoute = () => {
         <sidenav-item
           to="/signup"
           :class="getRoute() === 'signup' ? 'active' : ''"
-          :navText="isRTL ? 'اشتراك' : 'Sign Up'"
+          :navText="isRTL ? 'اشتراك' : '회원가입'"
         >
           <template v-slot:icon>
             <i class="ni ni-collection text-info text-sm opacity-10"></i>
@@ -142,8 +142,8 @@ const getRoute = () => {
   <div class="pt-3 mx-3 mt-3 sidenav-footer">
     <sidenav-card
       :card="{
-        title: 'Need Help?',
-        description: 'Please check our docs',
+        title: '도움이 필요하십니까?',
+        description: '뭘 도와드릴깝쇼',
         links: [
           {
             label: 'Documentation',

@@ -9,42 +9,42 @@
             target="_blank"
             class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
-            Company
+            회사
           </a>
           <a
             href="javascript:;"
             target="_blank"
             class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
-            About Us
+            뭔데
           </a>
           <a
             href="javascript:;"
             target="_blank"
             class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
-            Team
+            팀
           </a>
           <a
             href="javascript:;"
             target="_blank"
             class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
-            Products
+            소개라도
           </a>
           <a
             href="javascript:;"
             target="_blank"
             class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
-            Blog
+            해야하나
           </a>
           <a
             href="javascript:;"
             target="_blank"
             class="mb-2 text-secondary me-xl-5 me-3 mb-sm-0"
           >
-            Pricing
+            ?
           </a>
         </div>
         <div class="mx-auto mt-2 mb-4 text-center col-lg-8">

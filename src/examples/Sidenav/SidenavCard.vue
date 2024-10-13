@@ -26,6 +26,7 @@ defineProps({
     class="card card-plain shadow-none"
     id="sidenavCard"
   >
+    <!-- 사이드메뉴바 밑 쪽 그림 -->
     <div class="p-3 card-body text-center w-100 pt-0">
       <img
         class="w-50 mx-auto"
@@ -35,15 +36,18 @@ defineProps({
 
       <h6 v-if="isRTL" class="mb-0 text-dark up">تحتاج مساعدة ؟</h6>
 
-      <h6 v-else class="mb-0 text-dark up">Need Help ?</h6>
+      <!-- 그림 밑 글씨 -->
+      <h6 v-else class="mb-0 text-dark up">도움이 필요하십니까?</h6>
 
       <p v-if="isRTL" class="text-xs font-weight-bold">
         يرجى التحقق من مستنداتنا
       </p>
 
-      <p v-else class="text-xs font-weight-bold">Please check our docs</p>
+      <!-- 글씨 밑 작은 글씨 -->
+      <p v-else class="text-xs font-weight-bold">뭘 도와드릴깝쇼</p>
     </div>
 
+    <!-- 아랍어 버전의 메뉴바 -->
     <a
       v-if="isRTL"
       href="https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/"
@@ -52,16 +56,17 @@ defineProps({
     >
       توثيق
     </a>
-
+    <!-- 그림과 글씨 밑 버튼 :  링크로 이동함 .-->
     <a
       v-else
       href="https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/"
       target="_blank"
       class="mb-3 btn btn-dark btn-sm w-100"
     >
-      Documentation
+      버튼 1
     </a>
 
+    <!-- 아랍어 버전의 메뉴바 -->
     <a
       v-if="isRTL"
       href="https://www.creative-tim.com/product/vue-argon-dashboard-pro"
@@ -70,14 +75,14 @@ defineProps({
     >
       التطور للاحترافية
     </a>
-
+    <!-- 버튼 클릭 시 링크 이동 -->
     <a
       v-else
       href="https://www.creative-tim.com/product/vue-argon-dashboard-pro"
       target="_blank"
       class="mb-3 btn btn-success btn-sm w-100"
     >
-      Upgrade to pro
+      버튼 2
     </a>
   </div>
 </template>

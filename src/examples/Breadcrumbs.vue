@@ -17,6 +17,7 @@ defineProps({
   },
 });
 </script>
+<!-- 페이지 경로와 현재 디렉토리 정보를 표시하는 기능을 구현한 것 -->
 <template>
   <nav aria-label="breadcrumb">
     <ol

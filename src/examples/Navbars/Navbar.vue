@@ -53,14 +53,17 @@ const closeMenu = () => {
           <div class="input-group">
             <span class="input-group-text text-body">
               <i class="fas fa-search" aria-hidden="true"></i>
+              <!-- 검색 아이콘 -->
             </span>
+            <!-- 검색 기능 -->
             <input
               type="text"
               class="form-control"
-              :placeholder="isRTL ? 'أكتب هنا...' : 'Type here...'"
+              :placeholder="isRTL ? 'أكتب هنا...' : '검색어 입력...'"
             />
           </div>
         </div>
+        <!-- Signin 로그인 링크 -->
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
@@ -70,7 +73,7 @@ const closeMenu = () => {
             >
               <i class="fa fa-user" :class="isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
               <span v-if="isRTL" class="d-sm-inline d-none">يسجل دخول</span>
-              <span v-else class="d-sm-inline d-none">Sign In</span>
+              <span v-else class="d-sm-inline d-none">로그인</span>
             </router-link>
           </li>
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

@@ -36,20 +36,23 @@ onMounted(() => {
 
   var gradientStroke1 = gradientLineChart.createLinearGradient(0, 230, 0, 50);
 
-  gradientStroke1.addColorStop(1, "rgba(203,12,159,0.2)");
-  gradientStroke1.addColorStop(0.2, "rgba(72,72,176,0.0)");
-  gradientStroke1.addColorStop(0, "rgba(203,12,159,0)"); //purple colors
+  // 첫 번째 그래디언트를 빨간색 계열로 변경
+  gradientStroke1.addColorStop(1, "rgba(255,99,132,0.2)"); // 연한 빨간색
+  gradientStroke1.addColorStop(0.2, "rgba(255,99,132,0.0)"); // 투명한 빨간색
+  gradientStroke1.addColorStop(0, "rgba(255,99,132,0)"); // 투명한 빨간색
 
+  // 두 번째 그래디언트를 빨간색 계열로 변경
   var gradientStroke2 = gradientLineChart.createLinearGradient(0, 230, 0, 50);
 
-  gradientStroke2.addColorStop(1, "rgba(20,23,39,0.2)");
-  gradientStroke2.addColorStop(0.2, "rgba(72,72,176,0.0)");
-  gradientStroke2.addColorStop(0, "rgba(20,23,39,0)"); //purple colors
+  gradientStroke2.addColorStop(1, "rgba(255,0,0,0.2)"); // 진한 빨간색
+  gradientStroke2.addColorStop(0.2, "rgba(255,0,0,0.0)"); // 투명한 진한 빨간색
+  gradientStroke2.addColorStop(0, "rgba(255,0,0,0)"); // 투명한 진한 빨간색
 
   let chartStatus = Chart.getChart(props.id);
   if (chartStatus != undefined) {
     chartStatus.destroy();
   }
+  // props를 통해 데이터를 받아와 차트를 렌더링하고, 사용자가 원하는 데이터셋에 따라 차트를 그리는 구조
   if (props.chart.datasets.length == 2) {
     new Chart(gradientLineChart, {
       type: "line",
@@ -151,7 +154,7 @@ onMounted(() => {
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
-            borderColor: "#4BB543 ",
+            borderColor: "#ef4d4d",
             backgroundColor: gradientStroke1,
             // eslint-disable-next-line no-dupe-keys
             borderWidth: 3,

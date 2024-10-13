@@ -67,7 +67,7 @@ const sales = {
               value="2,300"
               description="<span
                 class='text-sm font-weight-bolder text-success'
-                >+3%</span> since last week"
+                >+3%</span> 상승"
               :icon="{
                 component: 'ni ni-world',
                 background: 'bg-gradient-warning',
@@ -81,7 +81,7 @@ const sales = {
               value="+3,462"
               description="<span
                 class='text-sm font-weight-bolder text-danger'
-                >-2%</span> since last quarter"
+                >-2%</span> 실시간 변동률"
               :icon="{
                 component: 'ni ni-email-83',
                 background: 'bg-gradient-success',
@@ -95,7 +95,7 @@ const sales = {
               value="$103,430"
               description="<span
                 class='text-sm font-weight-bolder text-success'
-                >+5%</span> than last month"
+                >+5%</span> 실시간 변동률"
               :icon="{
                 component: 'ni ni-money-coins',
                 background: 'bg-gradient-secondary',
@@ -137,7 +137,7 @@ const sales = {
             </div>
           </div>
           <div class="col-lg-5">
-            <!-- 그림들 -->
+            <!-- 그림들 (노을 풍경, 리조트 풍경 등) -->
             <carousel />
           </div>
         </div>
