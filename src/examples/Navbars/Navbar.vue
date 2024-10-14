@@ -1,31 +1,31 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
-import { useRoute } from "vue-router";
-import Breadcrumbs from "../Breadcrumbs.vue";
+// import { useRoute } from "vue-router";
+// import Breadcrumbs from "../Breadcrumbs.vue";
 
-const showMenu = ref(false);
+// const showMenu = ref(false);
 const store = useStore();
 const isRTL = computed(() => store.state.isRTL);
 
-const route = useRoute();
+// const route = useRoute();
 
-const currentRouteName = computed(() => {
-  return route.name;
-});
-const currentDirectory = computed(() => {
-  let dir = route.path.split("/")[1];
-  return dir.charAt(0).toUpperCase() + dir.slice(1);
-});
+// const currentRouteName = computed(() => {
+//   return route.name;
+// });
+// const currentDirectory = computed(() => {
+//   let dir = route.path.split("/")[1];
+//   return dir.charAt(0).toUpperCase() + dir.slice(1);
+// });
 
-const minimizeSidebar = () => store.commit("sidebarMinimize");
-const toggleConfigurator = () => store.commit("toggleConfigurator");
+// const minimizeSidebar = () => store.commit("sidebarMinimize");
+// const toggleConfigurator = () => store.commit("toggleConfigurator");
 
-const closeMenu = () => {
-  setTimeout(() => {
-    showMenu.value = false;
-  }, 100);
-};
+// const closeMenu = () => {
+//   setTimeout(() => {
+//     showMenu.value = false;
+//   }, 100);
+// };
 </script>
 <template>
   <nav
@@ -36,10 +36,10 @@ const closeMenu = () => {
     data-scroll="true"
   >
     <div class="px-3 py-1 container-fluid">
-      <breadcrumbs
+      <!-- <breadcrumbs
         :current-page="currentRouteName"
         :current-directory="currentDirectory"
-      />
+      /> -->
 
       <div
         class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4"
@@ -71,12 +71,23 @@ const closeMenu = () => {
               class="px-0 nav-link font-weight-bold text-white"
               target="_blank"
             >
-              <i class="fa fa-user" :class="isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
+              <i class="fa fa-user" :class="isRTL ? 'ms-sm-2' : 'me-sm-3'"></i>
               <span v-if="isRTL" class="d-sm-inline d-none">يسجل دخول</span>
-              <span v-else class="d-sm-inline d-none">로그인</span>
+              <span v-else class="d-sm-inline d-none me-3">로그인</span>
             </router-link>
           </li>
-          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+          <li class="nav-item d-flex align-items-center">
+            <router-link
+              :to="{ name: 'Signup' }"
+              class="px-0 nav-link font-weight-bold text-white"
+              target="_blank"
+            >
+              <i class="fa fa-user" :class="isRTL ? 'ms-sm-2' : 'me-sm-3'"></i>
+              <span v-if="isRTL" class="d-sm-inline d-none">يسجل دخول</span>
+              <span v-else class="d-sm-inline d-none">회원가입</span>
+            </router-link>
+          </li>
+          <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
             <a
               href="#"
               @click="minimizeSidebar"
@@ -94,8 +105,9 @@ const closeMenu = () => {
             <a class="p-0 nav-link text-white" @click="toggleConfigurator">
               <i class="cursor-pointer fa fa-cog fixed-plugin-button-nav"></i>
             </a>
-          </li>
-          <li
+          </li> -->
+        </ul>
+        <!-- <li
             class="nav-item dropdown d-flex align-items-center"
             :class="isRTL ? 'ps-2' : 'pe-2'"
           >
@@ -110,13 +122,13 @@ const closeMenu = () => {
               @blur="closeMenu"
             >
               <i class="cursor-pointer fa fa-bell"></i>
-            </a>
-            <ul
+            </a> -->
+        <!-- <ul
               class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
               :class="showMenu ? 'show' : ''"
               aria-labelledby="dropdownMenuButton"
-            >
-              <li class="mb-2">
+            > -->
+        <!-- <li class="mb-2">
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="py-1 d-flex">
                     <div class="my-auto">
@@ -138,8 +150,8 @@ const closeMenu = () => {
                     </div>
                   </div>
                 </a>
-              </li>
-              <li class="mb-2">
+              </li> -->
+        <!-- <li class="mb-2">
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="py-1 d-flex">
                     <div class="my-auto">
@@ -161,8 +173,8 @@ const closeMenu = () => {
                     </div>
                   </div>
                 </a>
-              </li>
-              <li>
+              </li> -->
+        <!-- <li>
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="py-1 d-flex">
                     <div
@@ -219,7 +231,7 @@ const closeMenu = () => {
               </li>
             </ul>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>

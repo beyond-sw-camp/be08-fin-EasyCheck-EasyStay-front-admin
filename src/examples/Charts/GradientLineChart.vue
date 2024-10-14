@@ -2,28 +2,31 @@
 import { onMounted } from "vue";
 import Chart from "chart.js/auto";
 
+// 컴포넌트 외부에서 데이터를 받아오기 위한 인터페이스
 const props = defineProps({
   id: {
     type: String,
     required: true,
-  },
+  }, // 차트를 표시할 <canvas>의 ID
   height: {
     type: String,
     default: "300",
-  },
+  }, // 차트의 높이
   title: {
     type: String,
     default: "",
-  },
+  }, // 차트 제목
   description: {
     type: String,
     default: "",
-  },
+  }, // 차트 설명
   chart: {
+    // 차트 데이터와 설정
     type: Object,
     required: true,
-    labels: Array,
+    labels: Array, // X축에 표시할 레이블 목록
     datasets: {
+      // 데이터셋 정보 (여러 개 가능)
       type: Array,
       label: String,
       data: Array,
@@ -44,16 +47,20 @@ onMounted(() => {
   // 두 번째 그래디언트를 빨간색 계열로 변경
   var gradientStroke2 = gradientLineChart.createLinearGradient(0, 230, 0, 50);
 
-  gradientStroke2.addColorStop(1, "rgba(255,0,0,0.2)"); // 진한 빨간색
-  gradientStroke2.addColorStop(0.2, "rgba(255,0,0,0.0)"); // 투명한 진한 빨간색
-  gradientStroke2.addColorStop(0, "rgba(255,0,0,0)"); // 투명한 진한 빨간색
+  gradientStroke2.addColorStop(1, "rgba(54,162,235,0.2)"); // 파란색 계열
+  gradientStroke2.addColorStop(0.2, "rgba(54,162,235,0.0)");
 
+  var gradientStroke3 = gradientLineChart.createLinearGradient(0, 230, 0, 50);
+  gradientStroke3.addColorStop(1, "rgba(75,192,192,0.2)"); // 연한 초록색
+  gradientStroke3.addColorStop(0.2, "rgba(75,192,192,0.0)"); // 투명한 초록색
+
+  // 중복된 차트 방지를 위해 기존 차트 제거
   let chartStatus = Chart.getChart(props.id);
   if (chartStatus != undefined) {
     chartStatus.destroy();
   }
-  // props를 통해 데이터를 받아와 차트를 렌더링하고, 사용자가 원하는 데이터셋에 따라 차트를 그리는 구조
-  if (props.chart.datasets.length == 2) {
+  // 두 개의 데이터셋이 있는 경우
+  if (props.chart.datasets.length == 3) {
     new Chart(gradientLineChart, {
       type: "line",
       data: {
@@ -64,7 +71,7 @@ onMounted(() => {
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
-            borderColor: "#4BB543 ",
+            borderColor: "#f06161",
             backgroundColor: gradientStroke1,
             // eslint-disable-next-line no-dupe-keys
             borderWidth: 3,
@@ -77,12 +84,25 @@ onMounted(() => {
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
-            borderColor: "#3A416F",
+            borderColor: "#4181a1",
             // eslint-disable-next-line no-dupe-keys
             borderWidth: 3,
             backgroundColor: gradientStroke2,
             fill: true,
             data: props.chart.datasets[1].data,
+            maxBarThickness: 6,
+          },
+          {
+            label: props.chart.datasets[2].label,
+            tension: 0.4,
+            borderWidth: 0,
+            pointRadius: 0,
+            borderColor: "#49663c",
+            // eslint-disable-next-line no-dupe-keys
+            borderWidth: 3,
+            backgroundColor: gradientStroke3,
+            fill: true,
+            data: props.chart.datasets[2].data,
             maxBarThickness: 6,
           },
         ],

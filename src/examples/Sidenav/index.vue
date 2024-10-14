@@ -17,7 +17,7 @@ const darkMode = computed(() => store.state.darkMode);
   <div
     v-show="layout === 'default'"
     class="min-height-300 position-absolute w-100"
-    :class="`${darkMode ? 'bg-transparent' : 'bg-primary'}`"
+    :class="`${darkMode ? 'bg-transparent' : 'test'}`"
   />
 
   <aside
@@ -39,3 +39,14 @@ const darkMode = computed(() => store.state.darkMode);
     <sidenav-list />
   </aside>
 </template>
+
+<!-- <style scoped lang="scss">
+@import "../../assets/scss/argon-dashboard/variables";
+.gradient-bg-primary {
+  background: linear-gradient(
+    310deg,
+    $primary-gradient,
+    $primary-gradient-state
+  );
+}
+</style> -->

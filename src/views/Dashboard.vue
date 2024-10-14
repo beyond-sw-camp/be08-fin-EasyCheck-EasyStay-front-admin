@@ -51,9 +51,7 @@ const sales = {
             <mini-statistics-card
               title="가장 인기있는 객실"
               value="Deluxe(디럭스)"
-              description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+55%</span> 오늘 하루"
+              description="현재 가장 인기있는 객실"
               :icon="{
                 component: 'ni ni-favourite-28',
                 background: 'bg-gradient-danger',
@@ -67,7 +65,7 @@ const sales = {
               value="2,300"
               description="<span
                 class='text-sm font-weight-bolder text-success'
-                >+3%</span> 상승"
+                >+3%</span> 전일 대비 상승"
               :icon="{
                 component: 'ni ni-world',
                 background: 'bg-gradient-warning',
@@ -78,10 +76,8 @@ const sales = {
           <div class="col-lg-3 col-md-6 col-12">
             <mini-statistics-card
               title="문의 개수"
-              value="+3,462"
-              description="<span
-                class='text-sm font-weight-bolder text-danger'
-                >-2%</span> 실시간 변동률"
+              value="+1,462"
+              description="현재 누적 문의 개수"
               :icon="{
                 component: 'ni ni-email-83',
                 background: 'bg-gradient-success',
@@ -111,25 +107,22 @@ const sales = {
             <div class="card z-index-2">
               <gradient-line-chart
                 id="chart-line"
-                title="Sales Overview"
-                description="<i class='fa fa-arrow-up text-success'></i>
-      <span class='font-weight-bold'>4% more</span> in 2021"
+                title="각 리조트 호텔별 매출 현황"
+                description=""
                 :chart="{
-                  labels: [
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ],
+                  labels: ['Aug', 'Sep', 'Oct'],
                   datasets: [
                     {
-                      label: 'Mobile Apps',
-                      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                      label: 'A 리조트',
+                      data: [150, 200, 150],
+                    },
+                    {
+                      label: 'B 리조트',
+                      data: [180, 160, 200],
+                    },
+                    {
+                      label: 'C 호텔',
+                      data: [200, 140, 230],
                     },
                   ],
                 }"
