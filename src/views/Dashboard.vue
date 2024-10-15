@@ -2,7 +2,7 @@
 import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
 import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
 import Carousel from "./components/Carousel.vue";
-import CategoriesList from "./components/CategoriesList.vue";
+// import CategoriesList from "./components/CategoriesList.vue";
 
 import Deluxe from "@/assets/img/icons/flags/Deluxe.png";
 import Suite from "@/assets/img/icons/flags/Suite.png";
@@ -15,28 +15,28 @@ const sales = {
     country: "Deluxe(디럭스)",
     sales: 10,
     value: "$288,000",
-    bounce: "29.9%",
+    bounce: "2명",
     flag: Deluxe,
   },
   germany: {
     country: "Suite(스위트)",
     sales: 10,
     value: "$360,000",
-    bounce: "40.22%",
+    bounce: "4명",
     flag: Suite,
   },
   britain: {
     country: "Royal(로얄)",
     sales: 10,
     value: "$460,000",
-    bounce: "23.44%",
+    bounce: "6명",
     flag: Royal,
   },
   brasil: {
     country: "Platinum(플래티넘)",
     sales: 10,
     value: "$1,208,000",
-    bounce: "32.14%",
+    bounce: "2명",
     flag: Platinum,
   },
 };
@@ -107,22 +107,26 @@ const sales = {
             <div class="card z-index-2">
               <gradient-line-chart
                 id="chart-line"
-                title="각 리조트 호텔별 매출 현황"
+                title="각 객실별 매출 현황"
                 description=""
                 :chart="{
                   labels: ['Aug', 'Sep', 'Oct'],
                   datasets: [
                     {
-                      label: 'A 리조트',
+                      label: '디럭스',
                       data: [150, 200, 150],
                     },
                     {
-                      label: 'B 리조트',
+                      label: '스위트',
                       data: [180, 160, 200],
                     },
                     {
-                      label: 'C 호텔',
-                      data: [200, 140, 230],
+                      label: '로얄',
+                      data: [200, 140, 130],
+                    },
+                    {
+                      label: '플래티넘',
+                      data: [120, 180, 170],
                     },
                   ],
                 }"
@@ -135,7 +139,7 @@ const sales = {
           </div>
         </div>
         <div class="row mt-4">
-          <div class="col-lg-7 mb-lg-0 mb-4">
+          <div class="col-lg-12 mb-lg-0 mb-4">
             <div class="card">
               <div class="p-3 pb-0 card-header">
                 <div class="d-flex justify-content-between">
@@ -182,7 +186,9 @@ const sales = {
                       <td class="text-sm align-middle">
                         <div class="text-center col">
                           <!-- <p class="mb-0 text-s font-weight-bold">:</p> -->
-                          <h6 class="mb-0 text-sm">{{ sale.bounce }}</h6>
+                          <h6 class="mb-0 text-sm">
+                            기준 인원 : {{ sale.bounce }}
+                          </h6>
                         </div>
                       </td>
                     </tr>
@@ -193,7 +199,7 @@ const sales = {
           </div>
 
           <!-- Categories 리스트 -->
-          <div class="col-lg-5">
+          <!-- <div class="col-lg-5">
             <categories-list
               :categories="[
                 {
@@ -201,7 +207,7 @@ const sales = {
                     component: 'ni ni-mobile-button',
                     background: 'dark',
                   },
-                  label: 'Devices',
+                  label: '하츄핑 어트랙션',
                   description: '250 in stock <strong>346+ sold</strong>',
                 },
                 {
@@ -224,7 +230,7 @@ const sales = {
                 },
               ]"
             />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
