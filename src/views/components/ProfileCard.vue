@@ -1,7 +1,11 @@
 <template>
   <div class="card card-profile">
     <!-- 사진 Carousel -->
-    <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div
+      :id="`photoCarousel-${cardId}`"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
       <div class="carousel-inner">
         <div
           v-for="(photo, index) in photoList"
@@ -17,7 +21,7 @@
       <button
         class="carousel-control-prev"
         type="button"
-        data-bs-target="#photoCarousel"
+        :data-bs-target="`#photoCarousel-${cardId}`"
         data-bs-slide="prev"
       >
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -26,7 +30,7 @@
       <button
         class="carousel-control-next"
         type="button"
-        data-bs-target="#photoCarousel"
+        :data-bs-target="`#photoCarousel-${cardId}`"
         data-bs-slide="next"
       >
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -68,10 +72,26 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
+
+// props 정의
+const props = defineProps({
+  photoList: {
+    type: Array,
+    required: true,
+  },
+  onPhotoChange: {
+    type: Function,
+    required: true,
+  },
+  cardId: {
+    // 카드 ID를 props로 추가
+    type: Number,
+    required: true,
+  },
+});
 
 // 상태 관리
-const photoList = ref([]); // Carousel에 표시할 사진 리스트
 const tempPhoto = ref(null); // 임시 저장된 사진 (등록 전)
 const tempFileName = ref(""); // 임시 파일명 저장
 
@@ -91,7 +111,8 @@ function handleImageUpload(event) {
 // 사진 등록 핸들러
 function registerImage() {
   if (tempPhoto.value && tempFileName.value) {
-    photoList.value.push({ url: tempPhoto.value, name: tempFileName.value });
+    const newPhoto = { url: tempPhoto.value, name: tempFileName.value };
+    props.onPhotoChange(newPhoto); // 부모에게 사진 추가를 알림
     tempPhoto.value = null;
     tempFileName.value = "";
   } else {
@@ -101,7 +122,7 @@ function registerImage() {
 
 // 사진 삭제 핸들러
 function removeImage(index) {
-  photoList.value.splice(index, 1);
+  props.onPhotoChange(null, index); // 부모에게 사진 삭제를 알림
 }
 </script>
 
