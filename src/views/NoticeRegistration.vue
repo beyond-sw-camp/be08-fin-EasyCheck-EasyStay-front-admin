@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
       <div
         class="page-header min-height-300"
         style="
-          background-color: linear-gradient(310deg, #5e72e4, #825ee4);
+          background: linear-gradient(310deg, #5e72e4, #825ee4);
           margin-right: -24px;
           margin-left: -34%;
         "

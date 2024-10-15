@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, onMounted, onBeforeUnmount } from "vue";
+import { onBeforeMount, onMounted, onBeforeUnmount, ref } from "vue";
 import { useStore } from "vuex";
 
 import setNavPills from "@/assets/js/nav-pills.js";
@@ -11,6 +11,14 @@ import ArgonButton from "@/components/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
 const store = useStore();
+
+const photoList = ref([]);
+
+function updatePhotoList(newPhoto) {
+  if (newPhoto) {
+    photoList.value.push(newPhoto); // 새 사진 추가
+  }
+}
 
 onMounted(() => {
   store.state.isAbsolute = true;
@@ -39,7 +47,7 @@ onBeforeUnmount(() => {
       <div
         class="page-header min-height-300"
         style="
-          background-image: linear-gradient(310deg, #5e72e4, #825ee4);
+          background: linear-gradient(310deg, #5e72e4, #825ee4);
           margin-right: -24px;
           margin-left: -34%;
         "
@@ -182,7 +190,10 @@ onBeforeUnmount(() => {
           </div>
         </div>
         <div class="col-md-4">
-          <profile-card />
+          <profile-card
+            :photoList="photoList"
+            :onPhotoChange="updatePhotoList"
+          />
         </div>
       </div>
     </div>
