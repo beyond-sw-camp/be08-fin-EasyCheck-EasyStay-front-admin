@@ -26,7 +26,7 @@ defineProps({
         class="navbar-brand font-weight-bolder ms-lg-0 ms-3"
         :class="darkMode ? 'text-black' : 'text-white'"
         to="/"
-        >Argon Dashboard 2</router-link
+        >Easy Stay</router-link
       >
       <button
         class="shadow-none navbar-toggler ms-2"
@@ -56,7 +56,7 @@ defineProps({
                 aria-hidden="true"
                 :class="isBlur ? 'text-dark' : 'text-white'"
               ></i>
-              Dashboard
+              메인페이지
             </router-link>
           </li>
           <li class="nav-item">
@@ -66,7 +66,7 @@ defineProps({
                 aria-hidden="true"
                 :class="isBlur ? 'text-dark' : 'text-white'"
               ></i>
-              Profile
+              마이페이지
             </router-link>
           </li>
           <li class="nav-item">
@@ -76,7 +76,7 @@ defineProps({
                 aria-hidden="true"
                 :class="isBlur ? 'text-dark' : 'text-white'"
               ></i>
-              Sign Up
+              회원가입
             </router-link>
           </li>
           <li class="nav-item">
@@ -86,7 +86,7 @@ defineProps({
                 aria-hidden="true"
                 :class="isBlur ? 'text-dark' : 'text-white'"
               ></i>
-              Sign In
+              로그인
             </router-link>
           </li>
         </ul>
@@ -96,7 +96,7 @@ defineProps({
               href="https://www.creative-tim.com/product/vue-argon-dashboard"
               class="btn btn-sm mb-0 me-1"
               :class="isBtn"
-              >Free download</a
+              >로그아웃</a
             >
           </li>
         </ul>

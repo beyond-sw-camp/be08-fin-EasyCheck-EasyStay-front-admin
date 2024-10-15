@@ -13,12 +13,12 @@ const store = useStore();
           >
             ©
             {{ new Date().getFullYear() }}, made with
-            <i class="fa fa-heart"></i> by
+            <i class="fa fa-star"></i> by
             <a
               href="https://www.creative-tim.com"
               class="font-weight-bold"
               target="_blank"
-              >Creative Tim</a
+              >Easy Check</a
             >
             for a better web.
           </div>
@@ -29,34 +29,42 @@ const store = useStore();
           >
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com"
+                href="https://github.com/yongun2"
                 class="nav-link text-muted"
                 target="_blank"
-                >Creative Tim</a
+                >계용운</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/presentation"
+                href="https://github.com/hoyeon96"
                 class="nav-link text-muted"
                 target="_blank"
-                >About Us</a
+                >윤호연</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/blog"
+                href="https://github.com/limjihoon99"
                 class="nav-link text-muted"
                 target="_blank"
-                >Blog</a
+                >임지훈</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/license"
+                href="https://github.com/NAHYEON0713"
                 class="nav-link pe-0 text-muted"
                 target="_blank"
-                >License</a
+                >김나현</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://github.com/jeongjinjoo"
+                class="nav-link pe-0 text-muted"
+                target="_blank"
+                >정진주</a
               >
             </li>
           </ul>

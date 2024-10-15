@@ -1,10 +1,10 @@
 <script setup>
-import { computed } from "vue";
-import { useStore } from "vuex";
-const store = useStore();
+// import { computed } from "vue";
+// import { useStore } from "vuex";
+// const store = useStore();
 
-const isRTL = computed(() => store.state.isRTL);
-const layout = computed(() => store.state.layout);
+// const isRTL = computed(() => store.state.isRTL);
+// const layout = computed(() => store.state.layout);
 defineProps({
   card: {
     type: Object,
@@ -26,58 +26,33 @@ defineProps({
     class="card card-plain shadow-none"
     id="sidenavCard"
   >
-    <div class="p-3 card-body text-center w-100 pt-0">
-      <img
-        class="w-50 mx-auto"
-        src="@/assets/img/illustrations/icon-documentation.svg"
-        alt="sidebar_illustration"
-      />
-
+    <!-- 사이드메뉴바 밑 쪽 그림 -->
+    <!-- <div class="p-3 card-body text-center w-100 pt-0">
       <h6 v-if="isRTL" class="mb-0 text-dark up">تحتاج مساعدة ؟</h6>
-
-      <h6 v-else class="mb-0 text-dark up">Need Help ?</h6>
 
       <p v-if="isRTL" class="text-xs font-weight-bold">
         يرجى التحقق من مستنداتنا
       </p>
+    </div> -->
 
-      <p v-else class="text-xs font-weight-bold">Please check our docs</p>
-    </div>
-
-    <a
+    <!-- 아랍어 버전의 메뉴바 -->
+    <!-- <a
       v-if="isRTL"
       href="https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/"
       target="_blank"
       class="mb-3 btn btn-dark btn-sm w-100"
     >
       توثيق
-    </a>
-
-    <a
-      v-else
-      href="https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/"
-      target="_blank"
-      class="mb-3 btn btn-dark btn-sm w-100"
-    >
-      Documentation
-    </a>
-
-    <a
+    </a> -->
+    <!-- 아랍어 버전의 메뉴바 -->
+    <!-- <a
       v-if="isRTL"
       href="https://www.creative-tim.com/product/vue-argon-dashboard-pro"
       target="_blank"
       class="mb-3 btn btn-success btn-sm w-100"
     >
       التطور للاحترافية
-    </a>
-
-    <a
-      v-else
-      href="https://www.creative-tim.com/product/vue-argon-dashboard-pro"
-      target="_blank"
-      class="mb-3 btn btn-success btn-sm w-100"
-    >
-      Upgrade to pro
-    </a>
+    </a> -->
+    <!-- 버튼 클릭 시 링크 이동 -->
   </div>
 </template>

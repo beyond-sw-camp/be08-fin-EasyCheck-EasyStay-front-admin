@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { onBeforeMount, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
@@ -239,4 +239,4 @@ onBeforeUnmount(() => {
       </div>
     </div>
   </div>
-</template>
+</template> -->

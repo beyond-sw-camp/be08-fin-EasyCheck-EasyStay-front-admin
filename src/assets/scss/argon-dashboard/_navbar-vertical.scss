@@ -2,15 +2,30 @@
 // Vertical navbar + Sidenav
 //
 
+// 수직 네비게이션 스타일링
+// 로고의 최대 크기를 제한함.
 .navbar-vertical {
   .navbar-brand > img,
   .navbar-brand-img {
     max-width: 100%;
-    max-height: 2rem;
+    max-height: 15rem;
+  }
+
+  //  헤딩에 대한 스타일을 설정해 여백, 글꼴 크기, 텍스트 변환
+  .navbar-heading {
+    margin-top: 1rem; // 로고 아래 공간 추가
+    padding-top: $nav-link-padding-y;
+    padding-bottom: $nav-link-padding-y;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
   // Navbar navigaton
+  // 내비게이션 링크 목록의 스타일을 정의함.
   .navbar-nav {
+    margin-top: 7rem;
     // Navbar link
+    //  각 내비게이션 링크에 대한 스타일을 지정하며, 아이콘, 패딩, 색상 등을 설정
     .nav-link {
       padding-left: $navbar-padding-x;
       padding-right: $navbar-padding-x;
@@ -23,6 +38,7 @@
         line-height: ($font-size-base * $line-height-base);
       }
       // Dropdown
+      //  드롭다운 메뉴의 스타일을 설정함. ( 테두리 없애고, 내부 드롭다운 메뉴 여백 조정)
       .dropdown-menu {
         border: none;
 
@@ -41,6 +57,7 @@
       }
     }
   }
+
   // Navbar navigation
   .navbar-nav .nav-link {
     display: flex;
@@ -56,6 +73,7 @@
     letter-spacing: 0.04em;
   }
   // Expanded navbar specific styles
+  // 반응형 디자인 적용
   &.navbar-expand {
     @each $breakpoint, $dimension in $grid-breakpoints {
       &-#{$breakpoint} {
@@ -104,7 +122,7 @@
             margin: 0 $navbar-vertical-nav-link-padding-x;
 
             .nav-link-text,
-            .sidenav-mini-icon,
+            .-mini-icon,
             .sidenav-normal,
             i {
               pointer-events: none;
@@ -165,6 +183,7 @@
   }
 }
 
+// 사이드 네비게이션의 스타일을 정의함. 일반과 마우스 오버 상태 등
 .sidenav {
   // Define colors
   @each $color, $value in $theme-colors {
@@ -233,6 +252,9 @@
 
   .navbar-brand {
     padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -503,6 +525,7 @@
     &.rtl .main-content {
       margin-right: $navbar-vertical-hidden-width !important;
 
+      // hover : 사이드바에 마우스를 올리면 사이즈 확장
       .navbar-vertical {
         &:hover {
           max-width: $navbar-vertical-open-width !important;
