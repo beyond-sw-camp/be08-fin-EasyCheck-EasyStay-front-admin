@@ -54,13 +54,17 @@ onMounted(() => {
   gradientStroke3.addColorStop(1, "rgba(75,192,192,0.2)"); // 연한 초록색
   gradientStroke3.addColorStop(0.2, "rgba(75,192,192,0.0)"); // 투명한 초록색
 
+  var gradientStroke4 = gradientLineChart.createLinearGradient(0, 230, 0, 50);
+  gradientStroke4.addColorStop(1, "rgba(255,223,0,0.2)"); // 연한 노란색
+  gradientStroke4.addColorStop(0.2, "rgba(255,223,0,0.0)"); // 투명한 노란색
+
   // 중복된 차트 방지를 위해 기존 차트 제거
   let chartStatus = Chart.getChart(props.id);
   if (chartStatus != undefined) {
     chartStatus.destroy();
   }
-  // 두 개의 데이터셋이 있는 경우
-  if (props.chart.datasets.length == 3) {
+  // 네 개의 데이터셋이 있는 경우
+  if (props.chart.datasets.length == 4) {
     new Chart(gradientLineChart, {
       type: "line",
       data: {
@@ -103,6 +107,19 @@ onMounted(() => {
             backgroundColor: gradientStroke3,
             fill: true,
             data: props.chart.datasets[2].data,
+            maxBarThickness: 6,
+          },
+          {
+            label: props.chart.datasets[3].label,
+            tension: 0.4,
+            borderWidth: 0,
+            pointRadius: 0,
+            borderColor: "#FD9F28",
+            // eslint-disable-next-line no-dupe-keys
+            borderWidth: 3,
+            backgroundColor: gradientStroke4,
+            fill: true,
+            data: props.chart.datasets[3].data,
             maxBarThickness: 6,
           },
         ],
