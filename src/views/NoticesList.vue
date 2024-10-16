@@ -1,18 +1,209 @@
-<script setup>
-import AuthorsTable from "./components/AuthorsTable.vue";
-import ProjectsTable from "./components/ProjectsTable.vue";
-</script>
 <template>
   <div class="py-4 container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <authors-table />
-      </div>
-    </div>
-    <div class="mt-4 row">
-      <div class="col-12">
-        <projects-table />
-      </div>
-    </div>
+    <AuthorsTable title="공지사항 목록" :authors="developerTeam" />
   </div>
 </template>
+
+<script>
+import AuthorsTable from "./components/AuthorsTable.vue";
+
+export default {
+  components: { AuthorsTable },
+  data() {
+    return {
+      developerTeam: [
+        {
+          id: 1,
+          name: "John Michael",
+          email: "john@creative-tim.com",
+          function: "Manager",
+          department: "Organization",
+          status: "Online",
+          employed: "23/04/18",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 2,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 3,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 4,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 5,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 6,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Online",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 7,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 8,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Online",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 9,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 10,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 11,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 12,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 13,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 14,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 15,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 16,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 17,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 18,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+        {
+          id: 19,
+          name: "Alexa Liras",
+          email: "alexa@creative-tim.com",
+          function: "Programmer",
+          department: "Developer",
+          status: "Offline",
+          employed: "11/01/19",
+          image: require("../assets/img/002.png"),
+        },
+      ],
+    };
+  },
+};
+</script>
