@@ -22,29 +22,29 @@
               <th
                 class="ztext-secondary text-xxs font-weight-bolder opacity-7 ps-6"
               >
-                제목
+                이름
               </th>
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                작성자
+                위치
               </th>
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                작성일
+                개장일
               </th>
               <th class="text-secondary opacity-7"></th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(author, index) in authors" :key="author.id">
+            <tr v-for="(park, index) in parks" :key="park.id">
               <!-- 사진 -->
               <td class="photo-cell">
                 <img
-                  :src="author.image"
+                  :src="park.image"
                   class="avatar avatar-sm"
-                  :alt="author.name"
+                  :alt="park.name"
                 />
               </td>
 
@@ -53,22 +53,22 @@
                 <span class="text-sm font-weight-bold">{{ index + 1 }}</span>
               </td>
 
-              <!-- 제목 및 부가 설명 -->
+              <!-- 테마파크 이름 -->
               <td class="title-cell">
-                <h6 class="mb-0 text-m">{{ author.title }}</h6>
+                <h6 class="mb-0 text-m">{{ park.name }}</h6>
               </td>
 
-              <!-- 작성자 -->
+              <!-- 위치 -->
               <td class="text-center">
                 <p class="text-m text-secondary mb-0">
-                  {{ author.department }}
+                  {{ park.location }}
                 </p>
               </td>
 
-              <!-- 작성일 -->
+              <!-- 개장일 -->
               <td class="text-center">
                 <span class="text-sm font-weight-bold">{{
-                  author.employed
+                  park.openingDate
                 }}</span>
               </td>
 
@@ -92,9 +92,9 @@ export default {
   props: {
     title: {
       type: String,
-      default: "공지사항 목록",
+      default: "테마파크 목록",
     },
-    authors: {
+    parks: {
       type: Array,
       required: true,
       default: () => [],
