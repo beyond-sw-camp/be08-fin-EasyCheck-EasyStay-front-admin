@@ -25,15 +25,6 @@
         </form>
       </div>
     </div>
-
-    <div class="button-group">
-      <button
-        class="btn btn-sm btn-warning-custom"
-        @click="showResponseForm = true"
-      >
-        답변
-      </button>
-    </div>
   </div>
 </template>
 
@@ -42,9 +33,9 @@ export default {
   data() {
     return {
       response: "",
-      showResponseForm: false, // 모달 표시 상태
     };
   },
+  props: ["showResponseForm"],
   methods: {
     submitResponse() {
       console.log("답변 제출:", this.response);
@@ -52,7 +43,7 @@ export default {
       this.closeModal(); // 모달 닫기
     },
     closeModal() {
-      this.showResponseForm = false; // 모달 닫기
+      this.$emit("close");
     },
   },
 };

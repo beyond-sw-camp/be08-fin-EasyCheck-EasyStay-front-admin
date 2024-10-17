@@ -6,7 +6,7 @@
       @open-response-form="showResponseForm = true"
     />
     <ResponseForm
-      v-if="showResponseForm"
+      :showResponseForm="showResponseForm"
       @close="showResponseForm = false"
       @response-submitted="handleResponseSubmitted"
     />
@@ -101,6 +101,9 @@ export default {
       // 여기에서 답변 제출 후의 로직을 처리
       this.showResponseForm = false; // 폼 닫기
       // 필요한 경우 데이터 갱신 또는 알림 추가
+    },
+    closeModal() {
+      this.showResponseForm = false;
     },
   },
 };
