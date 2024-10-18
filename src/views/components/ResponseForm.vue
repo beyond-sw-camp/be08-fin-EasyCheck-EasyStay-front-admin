@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- 모달 창 -->
     <div v-if="showResponseForm" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <h2>건의사항 답변</h2>
@@ -10,7 +9,7 @@
             <textarea
               id="response"
               v-model="response"
-              rows="4"
+              rows="8"
               required
               class="form-control"
               placeholder="답변을 입력하세요..."
@@ -40,7 +39,8 @@ export default {
     submitResponse() {
       console.log("답변 제출:", this.response);
       this.$emit("response-submitted");
-      this.closeModal(); // 모달 닫기
+      this.response = "";
+      this.closeModal();
     },
     closeModal() {
       this.$emit("close");
@@ -52,89 +52,120 @@ export default {
 <style scoped>
 /* 모달 오버레이 */
 .modal-overlay {
-  position: fixed; /* 전체 화면에 고정 */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
-  display: flex; /* 중앙 정렬을 위해 플렉스 박스 사용 */
-  justify-content: center; /* 수평 중앙 정렬 */
-  align-items: center; /* 수직 중앙 정렬 */
-  z-index: 1000; /* 가장 위에 표시 */
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
 }
 
 /* 모달 콘텐츠 */
 .modal-content {
-  background-color: #fff; /* 흰색 배경 */
-  border-radius: 8px; /* 모서리 둥글게 */
-  padding: 20px; /* 패딩 */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-  width: 90%; /* 너비 설정 */
-  max-width: 500px; /* 최대 너비 */
+  background: #fdfdfd;
+  border-radius: 24px;
+  padding: 40px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
-/* 나머지 스타일은 이전과 동일 */
+/* 타이틀 */
 h2 {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #34495e;
+  text-align: center;
+  font-weight: 700;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
+/* 폼 그룹 */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
+/* 레이블 */
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: #34495e;
   font-weight: bold;
 }
 
+/* 텍스트 영역 */
 .form-control {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+  padding: 18px;
+  border: 1px solid #d1d8e0;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  background-color: #f5f8fa;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+  resize: none;
 }
 
 .form-control:focus {
-  border-color: #007bff;
+  border-color: #3498db;
+  background-color: #ffffff;
   outline: none;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
 }
 
+/* 버튼 그룹 */
 .button-group {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
 }
 
+/* 버튼 */
 .btn {
-  padding: 10px 15px;
-  font-size: 1rem;
+  flex: 1;
+  padding: 15px;
+  font-size: 1.2rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 24px;
   cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
+/* 등록 버튼 */
 .btn-primary {
-  background-color: #007bff;
+  background-color: #3498db;
   color: white;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #2980b9;
+  transform: scale(1.05);
 }
 
+/* 취소 버튼 */
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #95a5a6;
   color: white;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(149, 165, 166, 0.4);
 }
 
 .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color: #7f8c8d;
+  transform: scale(1.05);
 }
 </style>

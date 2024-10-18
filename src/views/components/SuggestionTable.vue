@@ -138,6 +138,7 @@ export default {
 /* 사진 셀 */
 .photo-cell {
   padding: 0 8px;
+  padding-left: 20px;
   text-align: center;
   width: 50px;
 }
