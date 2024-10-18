@@ -1,13 +1,15 @@
 <script setup>
 import { onBeforeUnmount, onBeforeMount } from "vue";
 import { useStore } from "vuex";
-import Navbar from "@/examples/PageLayout/Navbar.vue";
+import { useRouter } from "vue-router";
 import ArgonInput from "@/components/ArgonInput.vue";
-import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
-const body = document.getElementsByTagName("body")[0];
+import carouselImage from "@/assets/img/carousel-1.jpg";
 
+const body = document.getElementsByTagName("body")[0];
 const store = useStore();
+const router = useRouter();
+
 onBeforeMount(() => {
   store.state.hideConfigButton = true;
   store.state.showNavbar = false;
@@ -15,6 +17,7 @@ onBeforeMount(() => {
   store.state.showFooter = false;
   body.classList.remove("bg-gray-100");
 });
+
 onBeforeUnmount(() => {
   store.state.hideConfigButton = false;
   store.state.showNavbar = true;
@@ -22,19 +25,18 @@ onBeforeUnmount(() => {
   store.state.showFooter = true;
   body.classList.add("bg-gray-100");
 });
+
+// 로그인 함수 정의
+const handleLogin = () => {
+  // 여기에 로그인 처리 로직 추가
+  // ...
+
+  // 로그인 성공 시 메인 페이지로 이동
+  router.push("/dashboard-default");
+};
 </script>
+
 <template>
-  <div class="container top-0 position-sticky z-index-sticky">
-    <div class="row">
-      <div class="col-12">
-        <navbar
-          isBlur="blur  border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow"
-          v-bind:darkMode="true"
-          isBtn="bg-gradient-success"
-        />
-      </div>
-    </div>
-  </div>
   <main class="mt-0 main-content">
     <section>
       <div class="page-header min-vh-100">
@@ -45,54 +47,61 @@ onBeforeUnmount(() => {
             >
               <div class="card card-plain">
                 <div class="pb-0 card-header text-start">
-                  <h4 class="font-weight-bolder">Sign In</h4>
-                  <p class="mb-0">Enter your email and password to sign in</p>
+                  <img
+                    src="@/assets/img/013.png"
+                    alt="로고"
+                    style="width: 80px; height: auto; margin-bottom: 10px"
+                  />
+                  <h4 class="font-weight-bolder" style="font-size: 35px">
+                    로그인
+                  </h4>
+                  <p class="mb-0" style="font-size: 20px">
+                    Easy Stay 관리자 로그인
+                  </p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
-                    <div class="mb-3">
-                      <argon-input
+                  <form role="form" @submit.prevent="handleLogin">
+                    <div class="mb-4">
+                      <ArgonInput
                         id="email"
                         type="email"
                         placeholder="Email"
                         name="email"
                         size="lg"
+                        style="font-size: 28px; padding: 10px"
                       />
                     </div>
-                    <div class="mb-3">
-                      <argon-input
+                    <div class="mb-4">
+                      <ArgonInput
                         id="password"
                         type="password"
                         placeholder="Password"
                         name="password"
                         size="lg"
+                        style="font-size: 28px; padding: 10px"
                       />
                     </div>
-                    <argon-switch id="rememberMe" name="remember-me"
-                      >Remember me</argon-switch
-                    >
 
                     <div class="text-center">
-                      <argon-button
+                      <ArgonButton
                         class="mt-4"
                         variant="gradient"
-                        color="success"
+                        style="
+                          background: linear-gradient(
+                            to right,
+                            #ff7e5f,
+                            #feb47b
+                          );
+                          font-size: 24px;
+                          padding: 16px;
+                        "
                         fullWidth
                         size="lg"
-                        >Sign in</argon-button
                       >
+                        로그인
+                      </ArgonButton>
                     </div>
                   </form>
-                </div>
-                <div class="px-1 pt-0 text-center card-footer px-lg-2">
-                  <p class="mx-auto mb-4 text-sm">
-                    Don't have an account?
-                    <a
-                      href="javascript:;"
-                      class="text-success text-gradient font-weight-bold"
-                      >Sign up</a
-                    >
-                  </p>
                 </div>
               </div>
             </div>
@@ -100,23 +109,12 @@ onBeforeUnmount(() => {
               class="top-0 my-auto text-center col-6 d-lg-flex d-none h-100 pe-0 position-absolute end-0 justify-content-center flex-column"
             >
               <div
-                class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                style="
-                  background-image: url(&quot;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg&quot;);
-                  background-size: cover;
-                "
-              >
-                <span class="mask bg-gradient-success opacity-6"></span>
-                <h4
-                  class="mt-5 text-white font-weight-bolder position-relative"
-                >
-                  "Attention is the new currency"
-                </h4>
-                <p class="text-white position-relative">
-                  The more effortless the writing looks, the more effort the
-                  writer actually put into the process.
-                </p>
-              </div>
+                class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
+                :style="{
+                  backgroundImage: `url(${carouselImage})`,
+                  backgroundSize: 'cover',
+                }"
+              ></div>
             </div>
           </div>
         </div>
