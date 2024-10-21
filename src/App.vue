@@ -21,16 +21,20 @@ import Navbar from "@/examples/Navbars/Navbar.vue";
 import AppFooter from "@/examples/Footer.vue";
 
 const store = useStore();
-const isNavFixed = computed(() => store.state.isNavFixed);
-const darkMode = computed(() => store.state.darkMode);
-const isAbsolute = computed(() => store.state.isAbsolute);
-const showSidenav = computed(() => store.state.showSidenav);
-const layout = computed(() => store.state.layout);
-const showNavbar = computed(() => store.state.showNavbar);
-const showFooter = computed(() => store.state.showFooter);
-const showConfig = computed(() => store.state.showConfig);
-const hideConfigButton = computed(() => store.state.hideConfigButton);
-const toggleConfigurator = () => store.commit("toggleConfigurator");
+
+// 모든 상태를 layout 모듈에서 가져옵니다
+const isNavFixed = computed(() => store.state.layout.isNavFixed);
+const darkMode = computed(() => store.state.layout.darkMode);
+const isAbsolute = computed(() => store.state.layout.isAbsolute);
+const showSidenav = computed(() => store.state.layout.showSidenav);
+const layout = computed(() => store.state.layout.layout);
+const showNavbar = computed(() => store.state.layout.showNavbar);
+const showFooter = computed(() => store.state.layout.showFooter);
+const showConfig = computed(() => store.state.layout.showConfig);
+const hideConfigButton = computed(() => store.state.layout.hideConfigButton);
+
+// 뮤테이션 호출 시 'layout/' 네임스페이스를 추가합니다
+const toggleConfigurator = () => store.commit("layout/toggleConfigurator");
 
 const navClasses = computed(() => {
   return {
@@ -43,6 +47,7 @@ const navClasses = computed(() => {
   };
 });
 </script>
+
 <template>
   <div
     v-show="layout === 'landing'"
@@ -54,8 +59,6 @@ const navClasses = computed(() => {
   <main
     class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
   >
-    <!-- nav -->
-
     <navbar :class="[navClasses]" v-if="showNavbar" />
 
     <router-view />

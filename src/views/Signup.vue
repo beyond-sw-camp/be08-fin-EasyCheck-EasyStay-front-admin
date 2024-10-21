@@ -11,28 +11,33 @@ const store = useStore();
 const router = useRouter();
 
 onBeforeMount(() => {
-  store.state.hideConfigButton = true;
-  store.state.showNavbar = false;
-  store.state.showSidenav = false;
-  store.state.showFooter = false;
+  store.commit("layout/setHideConfigButton", true);
+  store.commit("layout/setShowNavbar", false);
+  store.commit("layout/setShowSidenav", false);
+  store.commit("layout/setShowFooter", false);
   body.classList.remove("bg-gray-100");
 });
 
 onBeforeUnmount(() => {
-  store.state.hideConfigButton = false;
-  store.state.showNavbar = true;
-  store.state.showSidenav = true;
-  store.state.showFooter = true;
+  store.commit("layout/setHideConfigButton", false);
+  store.commit("layout/setShowNavbar", true);
+  store.commit("layout/setShowSidenav", true);
+  store.commit("layout/setShowFooter", true);
   body.classList.add("bg-gray-100");
 });
 
 // 회원가입 함수 정의
-const handleSignup = () => {
-  // 여기에 회원가입 처리 로직 추가
-  // ...
+const handleSignup = async () => {
+  try {
+    // 여기에 회원가입 처리 로직 추가
+    // 예: await store.dispatch('auth/signup', { name, email, password });
 
-  // 회원가입 성공 시 로그인 페이지로 이동
-  router.push("/signin");
+    // 회원가입 성공 시 로그인 페이지로 이동
+    router.push("/signin");
+  } catch (error) {
+    console.error("회원가입 실패:", error);
+    // 에러 처리 로직 추가
+  }
 };
 </script>
 
@@ -128,7 +133,6 @@ const handleSignup = () => {
             <div
               class="top-0 my-auto text-center col-6 d-lg-flex d-none h-100 pe-0 position-absolute end-0 justify-content-center flex-column"
             >
-              <!-- 이미지 추가 부분 -->
               <div
                 class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
                 :style="{
