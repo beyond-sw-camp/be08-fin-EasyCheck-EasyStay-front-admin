@@ -18,6 +18,9 @@ export default {
     setAuthState(state, status) {
       state.isAuthenticated = status;
     },
+    removeNotice(state, noticeId) {
+      state.notices = state.notices.filter((notice) => notice.id !== noticeId);
+    },
   },
   actions: {
     // 공지사항 등록 액션 수정
@@ -65,18 +68,17 @@ export default {
       }
     },
 
-    // 유저 정보 가져오기 액션
-    // async fetchUserInfo({ commit }) {
-    //   try {
-    //     const response = await apiClient.get("/auth/me");
+    async deleteNotice({ commit }, noticeId) {
+      try {
+        // 공지사항 삭제
+        await apiClient.delete(`/notices-reply/${noticeId}`);
 
-    //     // user 정보를 상태에 저장 (setUser mutation 호출 필요)
-    //     commit("setUser", response.data);
-    //   } catch (error) {
-    //     console.error("유저 정보 조회 실패:", error);
-    //     throw error;
-    //   }
-    // },
+        commit("removeNotice", noticeId);
+      } catch (error) {
+        console.error("공지사항 삭제 실패 : ", error);
+        throw error;
+      }
+    },
 
     // 로그아웃 액션
     logout({ commit }) {
