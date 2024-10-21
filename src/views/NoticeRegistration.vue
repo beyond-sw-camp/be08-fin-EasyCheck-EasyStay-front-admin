@@ -1,7 +1,8 @@
 <script setup>
 import { onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
-
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import setNavPills from "@/assets/js/nav-pills.js";
 import setTooltip from "@/assets/js/tooltip.js";
 // import ProfileCard from "./components/ProfileCard.vue";
@@ -11,9 +12,16 @@ import ArgonButton from "@/components/ArgonButton.vue";
 const body = document.getElementsByTagName("body")[0];
 
 const store = useStore();
+const router = useRouter();
+
+// const notices = computed(() => store.state.notices);
+
+const title = ref(""); // 공지사항 제목
+const content = ref(""); // 공지사항 내용
 
 onMounted(() => {
   store.state.isAbsolute = true;
+  store.dispatch("notice/getAllNotices"); // 공지사항 목록 가져오기
   setNavPills();
   setTooltip();
 });
@@ -32,6 +40,43 @@ onBeforeUnmount(() => {
   store.state.hideConfigButton = false;
   body.classList.remove("profile-overview");
 });
+
+// 공지사항 등록 함수 정의
+const handlecreateNotice = async () => {
+  try {
+    console.log("요청 본문:", {
+      accommodationId: 1,
+      title: title.value,
+      content: content.value,
+    });
+    await store.dispatch("notice/createNotice", {
+      accommodationId: 1,
+      title: title.value,
+      content: content.value,
+    });
+    // auth.js의 actions에 정의된 login 함수를 호출한다.
+    // await store.dispatch("createNotice", {
+    //   title: title.value,
+    //   content: content.value,
+    // });
+    // 등록된 공지사항을 notices 배열에 추가
+    // if (response && response.data) {
+    //   store.commit("addNotice", {
+    //     id: notices.value.length + 1,
+    //     department: "작성자 이름",
+    //     title: response.data.title,
+    //     employed: new Date().toLocaleDateString(),
+    //     image: require("../assets/img/002.png"),
+    //   });
+    // }
+    // 리스트 페이지로 이동
+    router.push("/noticeslist");
+  } catch (error) {
+    console.error("등록 실패:", error);
+    // 여기에 에러 메시지를 표시하는 로직을 추가할 수 있습니다
+    alert("등록에 실패했습니다. 다시 시도해주세요.");
+  }
+};
 </script>
 <template>
   <main>
@@ -91,6 +136,7 @@ onBeforeUnmount(() => {
                           font-size: 20px;
                           margin-right: 5px;
                         "
+                        @click="handlecreateNotice"
                         >등록하기</argon-button
                       >
                     </a>
@@ -117,7 +163,8 @@ onBeforeUnmount(() => {
                 <div class="col-md-4">
                   <argon-input
                     type="text"
-                    value="공지사항 제목을 입력하세요"
+                    v-model="title"
+                    placeholder="공지사항 제목을 입력하세요"
                     style="border-radius: 5px; padding: 10px"
                   />
                 </div>
@@ -128,6 +175,7 @@ onBeforeUnmount(() => {
                 <div class="col-md-12">
                   <textarea
                     class="form-control"
+                    v-model="content"
                     style="
                       resize: none;
                       height: 300px;

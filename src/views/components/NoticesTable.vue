@@ -24,7 +24,7 @@
               >
                 제목
               </th>
-              <th
+              <!-- <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
                 작성자
@@ -33,7 +33,7 @@
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
                 작성일
-              </th>
+              </th> -->
               <th class="text-secondary opacity-7"></th>
             </tr>
           </thead>
