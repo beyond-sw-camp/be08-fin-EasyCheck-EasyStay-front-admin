@@ -11,28 +11,33 @@ const store = useStore();
 const router = useRouter();
 
 onBeforeMount(() => {
-  store.state.hideConfigButton = true;
-  store.state.showNavbar = false;
-  store.state.showSidenav = false;
-  store.state.showFooter = false;
+  store.commit("layout/setHideConfigButton", true);
+  store.commit("layout/setShowNavbar", false);
+  store.commit("layout/setShowSidenav", false);
+  store.commit("layout/setShowFooter", false);
   body.classList.remove("bg-gray-100");
 });
 
 onBeforeUnmount(() => {
-  store.state.hideConfigButton = false;
-  store.state.showNavbar = true;
-  store.state.showSidenav = true;
-  store.state.showFooter = true;
+  store.commit("layout/setHideConfigButton", false);
+  store.commit("layout/setShowNavbar", true);
+  store.commit("layout/setShowSidenav", true);
+  store.commit("layout/setShowFooter", true);
   body.classList.add("bg-gray-100");
 });
 
 // 로그인 함수 정의
-const handleLogin = () => {
-  // 여기에 로그인 처리 로직 추가
-  // ...
+const handleLogin = async () => {
+  try {
+    // 여기에 로그인 처리 로직 추가
+    // 예: await store.dispatch('auth/login', { email, password });
 
-  // 로그인 성공 시 메인 페이지로 이동
-  router.push("/dashboard-default");
+    // 로그인 성공 시 메인 페이지로 이동
+    router.push("/dashboard-default");
+  } catch (error) {
+    console.error("로그인 실패:", error);
+    // 에러 처리 로직 추가
+  }
 };
 </script>
 

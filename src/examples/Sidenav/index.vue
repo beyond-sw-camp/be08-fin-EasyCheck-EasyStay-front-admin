@@ -6,11 +6,14 @@ import logo from "@/assets/img/logo-ct-dark.png";
 import logoWhite from "@/assets/img/logo-ct.png";
 
 const store = useStore();
-const isRTL = computed(() => store.state.isRTL);
-const layout = computed(() => store.state.layout);
-const sidebarType = computed(() => store.state.sidebarType);
-const darkMode = computed(() => store.state.darkMode);
+
+// layout 모듈에서 상태를 가져옵니다
+const isRTL = computed(() => store.state.layout.isRTL);
+const layout = computed(() => store.state.layout.layout);
+const sidebarType = computed(() => store.state.layout.sidebarType);
+const darkMode = computed(() => store.state.layout.darkMode);
 </script>
+
 <template>
   <!-- 요 div가 dashboard 배경색 -->
   <!-- :class="`${darkMode ? 'bg-transparent' : 'bg-primary'}` 여기서 배경색 바꿀 수 있음 -->
