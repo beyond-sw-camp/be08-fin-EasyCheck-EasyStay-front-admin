@@ -1,5 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onBeforeMount } from "vue";
+import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import ArgonInput from "@/components/ArgonInput.vue";
@@ -9,6 +10,9 @@ import carouselImage from "@/assets/img/carousel-1.jpg";
 const body = document.getElementsByTagName("body")[0];
 const store = useStore();
 const router = useRouter();
+
+const email = ref(""); // 이메일 입력값
+const password = ref(""); // 비밀번호 입력값
 
 onBeforeMount(() => {
   store.commit("layout/setHideConfigButton", true);
@@ -29,14 +33,20 @@ onBeforeUnmount(() => {
 // 로그인 함수 정의
 const handleLogin = async () => {
   try {
-    // 여기에 로그인 처리 로직 추가
-    // 예: await store.dispatch('auth/login', { email, password });
+    // auth.js의 actions에 정의된 login 함수를 호출한다.
+    await store.dispatch("auth/login", {
+      email: email.value,
+      password: password.value,
+    });
 
-    // 로그인 성공 시 메인 페이지로 이동
+    // 로그인 성공 시 user 정보 가져오기
+    // await store.dispatch("auth/fetchUserInfo");
+
     router.push("/dashboard-default");
   } catch (error) {
     console.error("로그인 실패:", error);
-    // 에러 처리 로직 추가
+    // 여기에 에러 메시지를 표시하는 로직을 추가할 수 있습니다
+    alert("로그인에 실패했습니다. 이메일과 비밀번호를 확인하세요.");
   }
 };
 </script>
@@ -68,7 +78,7 @@ const handleLogin = async () => {
                   <form role="form" @submit.prevent="handleLogin">
                     <div class="mb-4">
                       <ArgonInput
-                        id="email"
+                        v-model="email"
                         type="email"
                         placeholder="Email"
                         name="email"
@@ -78,7 +88,7 @@ const handleLogin = async () => {
                     </div>
                     <div class="mb-4">
                       <ArgonInput
-                        id="password"
+                        v-model="password"
                         type="password"
                         placeholder="Password"
                         name="password"
