@@ -15,6 +15,7 @@ import NoticeRegistration from "../views/NoticeRegistration.vue";
 import ThemeParksRegistration from "../views/ThemeParksRegistration.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
+import MoneyGraph from "../views/MoneyGraph.vue";
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path: "/dashboard-default",
     name: "Dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/moneygraph",
+    name: "MoneyGraph",
+    component: MoneyGraph,
   },
   {
     path: "/tables",
