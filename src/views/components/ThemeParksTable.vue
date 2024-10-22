@@ -29,17 +29,11 @@
               >
                 소개
               </th>
-              <!-- <th
-                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-              >
-                입장권 필요 유무
-              </th> -->
               <th class="text-secondary opacity-7"></th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(park, index) in parks" :key="park.id">
-              <!-- 사진 -->
               <td class="photo-cell">
                 <img
                   :src="park.image"
@@ -47,40 +41,48 @@
                   :alt="park.name"
                 />
               </td>
-
-              <!-- 번호 -->
               <td class="number-cell">
                 <span class="text-sm font-weight-bold">{{ index + 1 }}</span>
               </td>
-
-              <!-- 테마파크 이름 -->
               <td class="title-cell">
                 <h6 class="mb-0 text-m">{{ park.name }}</h6>
               </td>
-
-              <!-- 위치 -->
               <td class="text-center">
-                <p class="text-m text-secondary mb-0">
-                  {{ park.location }}
-                </p>
+                <p class="text-m text-secondary mb-0">{{ park.location }}</p>
               </td>
-
-              <!-- 개장일 -->
-              <!-- <td class="text-center">
-                <span class="text-sm font-weight-bold">{{
-                  park.openingDate
-                }}</span>
-              </td> -->
-
-              <!-- 버튼 -->
               <td class="text-center" colspan="2">
                 <div class="button-group">
-                  <button class="btn btn-sm btn-warning">시설 더보기</button>
+                  <button
+                    class="btn btn-sm btn-warning"
+                    @click="showFacilities(park.id)"
+                  >
+                    시설 더보기
+                  </button>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
+        <div v-if="selectedParkFacilities.length > 0">
+          <h6 class="mt-4">시설 목록</h6>
+          <div class="facility-cards">
+            <div
+              v-for="facility in selectedParkFacilities"
+              :key="facility.id"
+              class="facility-card"
+            >
+              <img
+                :src="facility.imageUrls[0]"
+                alt="시설 이미지"
+                class="facility-image"
+              />
+              <div class="facility-info">
+                <h6 class="facility-name">{{ facility.name }}</h6>
+                <p class="facility-description">{{ facility.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -98,6 +100,24 @@ export default {
       required: true,
       default: () => [],
     },
+  },
+  methods: {
+    async showFacilities(themeParkId) {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/v1/parks/${themeParkId}/attractions`
+        );
+        const data = await response.json();
+        this.selectedParkFacilities = data.data; // 데이터 바인딩
+      } catch (error) {
+        console.error("시설 목록 가져오기 실패:", error);
+      }
+    },
+  },
+  data() {
+    return {
+      selectedParkFacilities: [], // 선택한 테마파크의 시설 목록
+    };
   },
 };
 </script>
@@ -143,7 +163,7 @@ export default {
 /* 제목 셀 */
 .title-cell {
   padding-left: 64px;
-  text-align: left; /* 중앙 정렬 추가 */
+  text-align: left;
 }
 
 /* 버튼 그룹 정렬 */
@@ -157,5 +177,47 @@ export default {
 button {
   padding: 8px 15px;
   font-size: 0.9rem;
+}
+
+/* 시설 카드 스타일 */
+.facility-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.facility-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(33.333% - 16px); /* 3개 카드가 가로로 나열되도록 설정 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+}
+
+.facility-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.facility-info {
+  padding: 10px;
+}
+
+.facility-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.facility-description {
+  font-size: 0.9rem;
+  color: #666;
 }
 </style>
