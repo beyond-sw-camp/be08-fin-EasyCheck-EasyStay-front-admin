@@ -75,7 +75,7 @@
                 <div class="button-group">
                   <button
                     class="btn btn-sm btn-warning-custom"
-                    @click="$emit('open-response-form', park)"
+                    @click="onClickReplyButton(park)"
                   >
                     답변
                   </button>
@@ -105,6 +105,10 @@ export default {
   methods: {
     openResponseForm() {
       this.showResponseForm = true; // 폼 표시
+    },
+    onClickReplyButton(park) {
+      this.$emit("open-response-form", park);
+      this.$store.commit("suggestion/setSuggestionId", park.id);
     },
   },
 };
