@@ -6,14 +6,19 @@ export default {
   state: {
     isAuthenticated: true, // 초기 상태를 true로 설정 (필요에 따라 조정)
     suggestions: [], // 공지사항 리스트를 저장할 상태
+
+    suggestionId: null,
   },
   mutations: {
     setsuggestions(state, suggestions) {
-      console.log("받아온 다이닝 데이터 : ", suggestions);
+      console.log("받아온 건의사항 데이터 : ", suggestions);
       state.suggestions = suggestions;
     },
     setAuthState(state, status) {
       state.isAuthenticated = status;
+    },
+    setSuggestionId(state, id) {
+      state.suggestionId = id;
     },
   },
   actions: {
@@ -33,6 +38,17 @@ export default {
         commit("setsuggestions", suggestionsData); // 상태 업데이트
       } catch (error) {
         console.error("건의사항 목록 가져오기 실패:", error);
+      }
+    },
+    async reply(context, replyContent) {
+      try {
+        const response = await apiClient.post("/suggestions/reply", {
+          suggestionId: context.state.suggestionId,
+          replyContent,
+        });
+        console.log("응답 제출 : ", response);
+      } catch (error) {
+        console.log("답변 제출 실패 : ", error);
       }
     },
 

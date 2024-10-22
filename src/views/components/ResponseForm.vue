@@ -3,6 +3,7 @@
     <div v-if="showResponseForm" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <h2>건의사항 답변</h2>
+        <!-- 폼 전체에 대한 이벤트를 감지해 폼 제출 시 submitResponse 메소드가 호출됨. -->
         <form @submit.prevent="submitResponse">
           <div class="form-group">
             <label for="response">답변 내용:</label>
@@ -34,13 +35,21 @@ export default {
       response: "",
     };
   },
-  props: ["showResponseForm"],
+  props: {
+    showResponseForm: Boolean,
+  },
   methods: {
-    submitResponse() {
-      console.log("답변 제출:", this.response);
-      this.$emit("response-submitted");
-      this.response = "";
-      this.closeModal();
+    async submitResponse() {
+      try {
+        // API 요청을 통해 이메일 전송
+        this.$store.dispatch("suggestion/reply", this.response);
+
+        this.response = ""; // 입력 필드 초기화
+        this.closeModal(); // 모달 닫기
+      } catch (error) {
+        console.error("이메일 전송 실패:", error);
+        alert("답변 제출에 실패했습니다. 다시 시도해 주세요."); // 에러 메시지 출력
+      }
     },
     closeModal() {
       this.$emit("close");
