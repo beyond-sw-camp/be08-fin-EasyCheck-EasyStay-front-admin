@@ -27,13 +27,13 @@
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                위치
+                소개
               </th>
-              <th
+              <!-- <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                개장일
-              </th>
+                입장권 필요 유무
+              </th> -->
               <th class="text-secondary opacity-7"></th>
             </tr>
           </thead>
@@ -66,17 +66,16 @@
               </td>
 
               <!-- 개장일 -->
-              <td class="text-center">
+              <!-- <td class="text-center">
                 <span class="text-sm font-weight-bold">{{
                   park.openingDate
                 }}</span>
-              </td>
+              </td> -->
 
               <!-- 버튼 -->
               <td class="text-center" colspan="2">
                 <div class="button-group">
-                  <button class="btn btn-sm btn-primary">수정</button>
-                  <button class="btn btn-sm btn-danger">삭제</button>
+                  <button class="btn btn-sm btn-warning">시설 더보기</button>
                 </div>
               </td>
             </tr>
