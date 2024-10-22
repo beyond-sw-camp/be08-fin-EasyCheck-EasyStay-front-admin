@@ -4,6 +4,7 @@ import layout from "./modules/layout";
 import auth from "./modules/auth";
 import notice from "./modules/notice";
 import dining from "./modules/dining";
+import service from "./modules/service";
 
 export default createStore({
   modules: {
@@ -22,6 +23,10 @@ export default createStore({
     dining: {
       namespaced: true,
       ...dining,
+    },
+    service: {
+      namespaced: true,
+      ...service,
     },
   },
 });
