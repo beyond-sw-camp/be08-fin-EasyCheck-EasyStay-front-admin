@@ -27,12 +27,12 @@
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                메뉴
+                위치
               </th>
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                이용시간
+                메뉴
               </th>
               <th class="text-secondary opacity-7"></th>
             </tr>

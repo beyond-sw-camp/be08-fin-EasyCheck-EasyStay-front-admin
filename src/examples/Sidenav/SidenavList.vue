@@ -77,7 +77,7 @@ const getRoute = () => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <sidenav-item
           to="/themeparksregistration"
           :class="getRoute() === 'themeparksregistration' ? 'active' : ''"
@@ -87,7 +87,7 @@ const getRoute = () => {
             <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
           </template>
         </sidenav-item>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <sidenav-item
@@ -170,7 +170,7 @@ const getRoute = () => {
         <sidenav-item
           to="/dininglist"
           :class="getRoute() === 'dininglist' ? 'active' : ''"
-          :navText="'다이닝'"
+          :navText="'부대시설'"
         >
           <template v-slot:icon>
             <i
@@ -180,7 +180,7 @@ const getRoute = () => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <sidenav-item
           to="/amenitieslist"
           :class="getRoute() === 'amenitieslist' ? 'active' : ''"
@@ -192,7 +192,7 @@ const getRoute = () => {
             ></i>
           </template>
         </sidenav-item>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <sidenav-item
