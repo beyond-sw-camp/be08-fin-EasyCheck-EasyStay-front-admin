@@ -27,12 +27,12 @@
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                작성자
+                이메일
               </th>
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                작성일
+                타입
               </th>
               <th class="text-secondary opacity-7"></th>
             </tr>

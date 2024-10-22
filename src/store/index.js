@@ -6,6 +6,7 @@ import notice from "./modules/notice";
 import dining from "./modules/dining";
 import service from "./modules/service";
 import theme from "./modules/theme";
+import suggestion from "./modules/suggestion";
 
 export default createStore({
   modules: {
@@ -32,6 +33,10 @@ export default createStore({
     theme: {
       namespaced: true,
       ...theme,
+    },
+    suggestion: {
+      namespaced: true,
+      ...suggestion,
     },
   },
 });
