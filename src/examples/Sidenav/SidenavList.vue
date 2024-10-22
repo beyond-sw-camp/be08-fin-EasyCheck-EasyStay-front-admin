@@ -38,6 +38,29 @@ const getRoute = () => {
           class="text-m ps-4 text-uppercase font-weight-bolder opacity-6"
           :class="'ms-2'"
         >
+          매출
+        </h6>
+      </li>
+
+      <li class="nav-item">
+        <sidenav-item
+          to="/moneygraph"
+          :class="getRoute() === 'dashboard-default' ? 'active' : ''"
+          :navText="'매출 현황 페이지'"
+        >
+          <template v-slot:icon>
+            <i
+              class="ni ni-tv-2 text-primary text-sm opacity-10"
+            ></i> </template
+          >x
+        </sidenav-item>
+      </li>
+
+      <li class="mt-3 nav-item">
+        <h6
+          class="text-m ps-4 text-uppercase font-weight-bolder opacity-6"
+          :class="'ms-2'"
+        >
           결제
         </h6>
       </li>
