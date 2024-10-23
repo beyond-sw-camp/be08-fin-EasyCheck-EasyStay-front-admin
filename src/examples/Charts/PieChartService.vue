@@ -24,7 +24,6 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
-// 차트 옵션 설정
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -36,7 +35,7 @@ const chartOptions = {
       display: true,
       text: "부가서비스 매출",
       font: {
-        size: 24, // 글씨 크기를 24px로 설정
+        size: 24,
       },
     },
   },
@@ -50,43 +49,41 @@ const chartOptions = {
   },
 };
 
-// 차트 배경색을 하얀색으로 설정하는 beforeDraw 커스텀 훅 추가
 const backgroundColorPlugin = {
   id: "customCanvasBackgroundColor",
   beforeDraw: (chart) => {
     const ctx = chart.canvas.getContext("2d");
     ctx.save();
     ctx.globalCompositeOperation = "destination-over";
-    ctx.fillStyle = "white"; // 배경색을 하얀색으로 설정
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, chart.width, chart.height);
     ctx.restore();
   },
 };
 
-// DOM이 렌더링된 후에 차트를 그리기 위한 ref와 onMounted
 const chartCanvas = ref(null);
 
 onMounted(async () => {
-  await nextTick(); // DOM이 완전히 렌더링된 후 차트 생성
+  await nextTick();
   if (chartCanvas.value) {
     const ctx = chartCanvas.value.getContext("2d");
 
-    // 그라데이션 색상 설정
-    const lightBlueGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    lightBlueGradient.addColorStop(0, "#ADD8E6"); // 연한 파란색
-    lightBlueGradient.addColorStop(1, "#4682B4"); // 진한 파란색
+    // 호텔 서비스에 어울리는 고급스러운 색상 그라데이션 설정
+    const serviceGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    serviceGradient.addColorStop(0, "#8B4513"); // 브라운
+    serviceGradient.addColorStop(1, "#A0522D"); // 연한 브라운
 
-    const skyBlueGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    skyBlueGradient.addColorStop(0, "#87CEFA"); // 하늘색
-    skyBlueGradient.addColorStop(1, "#1E90FF"); // 중간 파란색
+    const themeparkGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    themeparkGradient.addColorStop(0, "#C19A6B"); // 골든 브라운
+    themeparkGradient.addColorStop(1, "#DEB887"); // 버르뉴드 우드
 
-    const darkBlueGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    darkBlueGradient.addColorStop(0, "#00BFFF"); // 밝은 청색
-    darkBlueGradient.addColorStop(1, "#0000CD"); // 진한 청색
+    const roomGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    roomGradient.addColorStop(0, "#CD853F"); // 페루
+    roomGradient.addColorStop(1, "#DAA520"); // 골든로드
 
-    const deepSkyBlueGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    deepSkyBlueGradient.addColorStop(0, "#00CED1"); // 연한 청록색
-    deepSkyBlueGradient.addColorStop(1, "#4682B4"); // 진한 파란색
+    const wineGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    wineGradient.addColorStop(0, "#8B0000"); // 다크 레드
+    wineGradient.addColorStop(1, "#B22222"); // 파이어브릭
 
     new ChartJS(ctx, {
       type: "pie",
@@ -97,10 +94,10 @@ onMounted(async () => {
             label: "각 테마별 매출 비율",
             data: [400000, 360000, 460000, 1208000],
             backgroundColor: [
-              lightBlueGradient,
-              skyBlueGradient,
-              darkBlueGradient,
-              deepSkyBlueGradient,
+              serviceGradient,
+              themeparkGradient,
+              roomGradient,
+              wineGradient,
             ],
           },
         ],
