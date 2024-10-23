@@ -12,6 +12,7 @@
     <canvas ref="chartCanvas" style="max-height: 700px"></canvas>
   </div>
 </template>
+
 <script setup>
 import { ref, onMounted, nextTick } from "vue";
 import {
@@ -24,7 +25,6 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
-// 차트 옵션 설정
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -36,7 +36,7 @@ const chartOptions = {
       display: true,
       text: "객실별 매출",
       font: {
-        size: 24, // 글씨 크기를 24px로 설정
+        size: 24,
       },
     },
   },
@@ -50,45 +50,37 @@ const chartOptions = {
   },
 };
 
-// 차트 배경색을 하얀색으로 설정하는 beforeDraw 커스텀 훅 추가
 const backgroundColorPlugin = {
   id: "customCanvasBackgroundColor",
   beforeDraw: (chart) => {
     const ctx = chart.canvas.getContext("2d");
     ctx.save();
     ctx.globalCompositeOperation = "destination-over";
-    ctx.fillStyle = "white"; // 배경색을 하얀색으로 설정
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, chart.width, chart.height);
     ctx.restore();
   },
 };
 
-// DOM이 렌더링된 후에 차트를 그리기 위한 ref와 onMounted
 const chartCanvas = ref(null);
 
 onMounted(async () => {
-  await nextTick(); // DOM이 완전히 렌더링된 후 차트 생성
+  await nextTick();
   if (chartCanvas.value) {
     const ctx = chartCanvas.value.getContext("2d");
 
-    // 그라데이션 색상 설정
+    // 모던하고 세련된 그라데이션 설정
+    const serviceGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    serviceGradient.addColorStop(0, "#3B82F6"); // 밝은 파랑
+    serviceGradient.addColorStop(1, "#60A5FA"); // 연한 파랑
 
-    // 노을색 그라데이션 설정
-    // const deluxeGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    // deluxeGradient.addColorStop(0, "#FF7E5F"); // 밝은 주황색
-    // deluxeGradient.addColorStop(1, "#FEB47B"); // 연한 노란색
+    const themeparkGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    themeparkGradient.addColorStop(0, "#10B981"); // 에메랄드
+    themeparkGradient.addColorStop(1, "#34D399"); // 연한 에메랄드
 
-    const suiteGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    suiteGradient.addColorStop(0, "#FF6A88"); // 분홍색
-    suiteGradient.addColorStop(1, "#FFA07A"); // 살구색
-
-    const royalGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    royalGradient.addColorStop(0, "#FF7E5F"); // 노란 주황색
-    royalGradient.addColorStop(1, "#FEB47B"); // 밝은 노란색
-
-    const platinumGradient = ctx.createLinearGradient(0, 0, 0, 500);
-    platinumGradient.addColorStop(0, "#F76B1C"); // 붉은 주황색
-    platinumGradient.addColorStop(1, "#FC6767"); // 밝은 붉은색
+    const roomGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    roomGradient.addColorStop(0, "#6366F1"); // 인디고
+    roomGradient.addColorStop(1, "#818CF8"); // 연한 인디고
 
     new ChartJS(ctx, {
       type: "pie",
@@ -98,12 +90,7 @@ onMounted(async () => {
           {
             label: "각 테마별 매출 비율",
             data: [360000, 460000, 1208000],
-            backgroundColor: [
-              //   deluxeGradient,
-              suiteGradient,
-              royalGradient,
-              platinumGradient,
-            ],
+            backgroundColor: [serviceGradient, themeparkGradient, roomGradient],
           },
         ],
       },

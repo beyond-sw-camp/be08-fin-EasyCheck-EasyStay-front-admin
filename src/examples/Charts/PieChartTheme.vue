@@ -24,7 +24,6 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
-// 차트 옵션 설정
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -36,7 +35,7 @@ const chartOptions = {
       display: true,
       text: "테마파크 매출",
       font: {
-        size: 24, // 글씨 크기를 24px로 설정
+        size: 24,
       },
     },
   },
@@ -50,43 +49,42 @@ const chartOptions = {
   },
 };
 
-// 차트 배경색을 하얀색으로 설정하는 beforeDraw 커스텀 훅 추가
 const backgroundColorPlugin = {
   id: "customCanvasBackgroundColor",
   beforeDraw: (chart) => {
     const ctx = chart.canvas.getContext("2d");
     ctx.save();
     ctx.globalCompositeOperation = "destination-over";
-    ctx.fillStyle = "white"; // 배경색을 하얀색으로 설정
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, chart.width, chart.height);
     ctx.restore();
   },
 };
 
-// DOM이 렌더링된 후에 차트를 그리기 위한 ref와 onMounted
 const chartCanvas = ref(null);
 
 onMounted(async () => {
-  await nextTick(); // DOM이 완전히 렌더링된 후 차트 생성
+  await nextTick();
   if (chartCanvas.value) {
     const ctx = chartCanvas.value.getContext("2d");
 
-    // 벚꽃색 계열 그라데이션 설정
-    const cherryBlossomGradient1 = ctx.createLinearGradient(0, 0, 0, 500);
-    cherryBlossomGradient1.addColorStop(0, "#FFB2C2"); // 연한 벚꽃색
-    cherryBlossomGradient1.addColorStop(1, "#FF6F91"); // 진한 벚꽃색
+    // 테마파크 분위기에 맞는 밝고 경쾌한 색상 그라데이션
+    const deluxeGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    deluxeGradient.addColorStop(0, "#FFD700"); // 밝은 골드
+    deluxeGradient.addColorStop(1, "#FFA500"); // 오렌지
 
-    const cherryBlossomGradient2 = ctx.createLinearGradient(0, 0, 0, 500);
-    cherryBlossomGradient2.addColorStop(0, "#F8D3E4"); // 아주 연한 핑크
-    cherryBlossomGradient2.addColorStop(1, "#F28E9B"); // 부드러운 핑크
+    const suiteGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    suiteGradient.addColorStop(0, "#FF4500"); // 선명한 레드 오렌지
+    suiteGradient.addColorStop(1, "#FF6347"); // 토마토 레드
 
-    const cherryBlossomGradient3 = ctx.createLinearGradient(0, 0, 0, 500);
-    cherryBlossomGradient3.addColorStop(0, "#FF69B4"); // 핫 핑크
-    cherryBlossomGradient3.addColorStop(1, "#C71585"); // 미디엄 보라
+    const royalGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    royalGradient.addColorStop(0, "#32CD32"); // 라임 그린
+    royalGradient.addColorStop(1, "#98FB98"); // 연한 그린
 
-    const cherryBlossomGradient4 = ctx.createLinearGradient(0, 0, 0, 500);
-    cherryBlossomGradient4.addColorStop(0, "#FF8DAA"); // 중간 핑크
-    cherryBlossomGradient4.addColorStop(1, "#FF3E5B"); // 강렬한 핑크
+    const platinumGradient = ctx.createLinearGradient(0, 0, 0, 500);
+    platinumGradient.addColorStop(0, "#1E90FF"); // 밝은 블루
+    platinumGradient.addColorStop(1, "#00BFFF"); // 딥스카이블루
+
     new ChartJS(ctx, {
       type: "pie",
       data: {
@@ -96,10 +94,10 @@ onMounted(async () => {
             label: "각 테마별 매출 비율",
             data: [288000, 360000, 460000, 1208000],
             backgroundColor: [
-              cherryBlossomGradient1, // 첫 번째 벚꽃색 그라데이션
-              cherryBlossomGradient2, // 두 번째 벚꽃색 그라데이션
-              cherryBlossomGradient3, // 세 번째 벚꽃색 그라데이션
-              cherryBlossomGradient4, // 네 번째 벚꽃색 그라데이션
+              deluxeGradient,
+              suiteGradient,
+              royalGradient,
+              platinumGradient,
             ],
           },
         ],
