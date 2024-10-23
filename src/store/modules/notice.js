@@ -61,7 +61,7 @@ export default {
 
     async getAllNotices({ commit }) {
       try {
-        const response = await apiClient.get("/notices-reply"); // 공지사항 API 호출
+        const response = await apiClient.get("/admin/notices"); // 공지사항 API 호출
         commit("setNotices", response.data); // 상태 업데이트
       } catch (error) {
         console.error("공지사항 목록 가져오기 실패:", error);

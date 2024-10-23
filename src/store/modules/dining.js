@@ -19,7 +19,7 @@ export default {
   actions: {
     async getAllDinings({ commit }) {
       try {
-        const response = await apiClient.get("/facilities");
+        const response = await apiClient.get("/admin/facilities");
         const facilitiesData = response.data.map((facility) => ({
           id: facility.id,
           name: facility.name,

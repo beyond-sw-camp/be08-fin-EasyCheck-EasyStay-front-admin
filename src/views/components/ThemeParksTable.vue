@@ -72,7 +72,7 @@
               class="facility-card"
             >
               <img
-                :src="facility.imageUrls[0]"
+                :src="facility.imageUrl"
                 alt="시설 이미지"
                 class="facility-image"
               />
@@ -108,6 +108,8 @@ export default {
           `http://localhost:8080/api/v1/parks/${themeParkId}/attractions`
         );
         const data = await response.json();
+        console.log(data);
+
         this.selectedParkFacilities = data.data; // 데이터 바인딩
       } catch (error) {
         console.error("시설 목록 가져오기 실패:", error);

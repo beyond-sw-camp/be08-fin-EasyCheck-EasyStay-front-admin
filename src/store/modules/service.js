@@ -19,7 +19,7 @@ export default {
   actions: {
     async getAllServices({ commit }) {
       try {
-        const response = await apiClient.get("/additional-services");
+        const response = await apiClient.get("/admin/additional-services");
         const servicesData = response.data.map((services) => ({
           id: services.id,
           name: services.name,

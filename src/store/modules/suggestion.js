@@ -24,7 +24,7 @@ export default {
   actions: {
     async getAllSuggestions({ commit }) {
       try {
-        const response = await apiClient.get(`/suggestions`);
+        const response = await apiClient.get(`/admin/suggestions`);
         console.log("응답 : ", response);
         console.log("응답 데이터 : ", response.data);
 

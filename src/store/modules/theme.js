@@ -19,15 +19,14 @@ export default {
   actions: {
     async getAllThemes({ commit }) {
       try {
-        const accommodationId = 1;
-        const response = await apiClient.get(
-          `/accommodations/${accommodationId}/parks`
-        );
+        const response = await apiClient.get("/admin/parks");
         console.log("응답 : ", response);
-        const themesData = response.data.data.map((themes) => ({
+        const themesData = response.data.map((themes) => ({
           id: themes.id,
           name: themes.name,
-          location: themes.description, // accommodationName을 location으로
+          location: themes.description,
+
+          // accommodationName을 location으로
           //   openingDate: themes.ticket_available, // description을 openingDate로 사용
         }));
         console.log("받아온 다이닝 데이터:", themesData);
