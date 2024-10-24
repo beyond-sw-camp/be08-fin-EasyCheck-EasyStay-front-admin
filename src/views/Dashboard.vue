@@ -135,7 +135,7 @@ const sales = {
           </div>
           <div class="col-lg-5">
             <!-- 그림들 (노을 풍경, 리조트 풍경 등) -->
-            <carousel />
+            <Carousel />
           </div>
         </div>
         <div class="row mt-4">

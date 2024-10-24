@@ -72,13 +72,13 @@
               class="facility-card"
             >
               <img
-                :src="facility.imageUrls[0]"
+                :src="facility.imageUrl"
                 alt="시설 이미지"
                 class="facility-image"
               />
               <div class="facility-info">
                 <h6 class="facility-name">{{ facility.name }}</h6>
-                <p class="facility-description">{{ facility.description }}</p>
+                <p class="facility-description">{{ facility.introduction }}</p>
               </div>
             </div>
           </div>
@@ -109,6 +109,7 @@ export default {
         );
         const data = await response.json();
         this.selectedParkFacilities = data.data; // 데이터 바인딩
+        console.log("이것이 시설이다!", this.selectedParkFacilities);
       } catch (error) {
         console.error("시설 목록 가져오기 실패:", error);
       }

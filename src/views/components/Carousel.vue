@@ -2,7 +2,7 @@
   <div class="card card-carousel overflow-hidden h-100 p-0">
     <div
       id="carouselExampleCaptions"
-      class="carousel slide h-200"
+      class="carousel slide h-100"
       data-bs-ride="carousel"
     >
       <div class="carousel-inner border-radius-lg h-100">
@@ -23,10 +23,6 @@
               <i class="ni ni-camera-compact text-dark opacity-10"></i>
             </div>
             <h5 class="text-white mb-1">노을 풍경</h5>
-            <!-- <p>
-              There’s nothing I really wanted to do in life that I wasn’t able
-              to get good at.
-            </p> -->
           </div>
         </div>
         <div

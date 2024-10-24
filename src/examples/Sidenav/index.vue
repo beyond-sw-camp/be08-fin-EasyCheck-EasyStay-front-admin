@@ -30,7 +30,7 @@ const darkMode = computed(() => store.state.layout.darkMode);
     id="sidenav-main"
   >
     <div class="sidenav-header">
-      <router-link class="m-0 navbar-brand" to="/">
+      <router-link class="m-0 navbar-brand" to="/dashboard-default">
         <img
           :src="darkMode || sidebarType === 'bg-default' ? logoWhite : logo"
           class="navbar-brand-img"
