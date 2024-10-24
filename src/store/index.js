@@ -7,6 +7,7 @@ import dining from "./modules/dining";
 import service from "./modules/service";
 import theme from "./modules/theme";
 import suggestion from "./modules/suggestion";
+import pay from "./modules/pay";
 
 export default createStore({
   modules: {
@@ -37,6 +38,10 @@ export default createStore({
     suggestion: {
       namespaced: true,
       ...suggestion,
+    },
+    pay: {
+      namespaced: true,
+      ...pay,
     },
   },
 });
