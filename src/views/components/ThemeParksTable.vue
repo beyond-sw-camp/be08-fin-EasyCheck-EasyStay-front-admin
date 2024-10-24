@@ -79,6 +79,8 @@
               <div class="facility-info">
                 <h6 class="facility-name">{{ facility.name }}</h6>
                 <p class="facility-description">{{ facility.introduction }}</p>
+                <p class="facility-description">{{ facility.information }}</p>
+                <p class="facility-description">{{ facility.standardUse }}</p>
               </div>
             </div>
           </div>
